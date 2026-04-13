@@ -52,9 +52,9 @@
     .nav-links a { padding:10px 14px; border-radius:999px; font-size:.98rem; color:var(--muted); transition: background var(--transition), color var(--transition), transform var(--transition); }
     .nav-links a:hover,.nav-links a:focus-visible { background: rgba(77,77,77,0.08); color:var(--text); transform:translateY(-1px); }
     .nav-cta { background: var(--accent); color:#fff !important; box-shadow:0 10px 22px rgba(0,0,0,0.12); }
-    .hero { padding: 44px 0 74px; }
-    .hero-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); gap:36px; align-items:center; }
-    .hero-copy { display:grid; gap:20px; }
+    .hero { padding: 52px 0 74px; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; align-items:start; }
+    .hero-copy { display:grid; gap:20px; max-width: 760px; }
     .hero-copy .lead { font-size: clamp(1.08rem, 2vw, 1.3rem); color: var(--muted); max-width: 58ch; }
     .hero-copy .lead-zh { font-size:1.04rem; max-width:54ch; }
     .cta-group,.contact-actions { display:flex; flex-wrap:wrap; gap:14px; }
@@ -62,31 +62,18 @@
     .button:hover,.button:focus-visible { transform:translateY(-2px); }
     .button-primary { background: var(--accent); color:#fff; box-shadow:0 16px 28px rgba(0,0,0,0.12); }
     .button-secondary { background: rgba(255,255,255,0.96); border-color: var(--line); }
-    .hero-visual { position:relative; min-height:520px; border-radius:36px; background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(239,239,239,0.98)), radial-gradient(circle at top, rgba(77,77,77,0.05), transparent 34%); box-shadow:var(--shadow); border:1px solid rgba(60,60,60,0.08); overflow:hidden; padding:30px; display:grid; grid-template-rows:1fr auto; gap:24px; }
-    .graph-wrap { position:relative; border-radius:26px; background:rgba(255,255,255,0.84); border:1px solid rgba(60,60,60,0.07); overflow:hidden; min-height:260px; }
-    .graph-grid { position:absolute; inset:0; background-image: linear-gradient(rgba(60,60,60,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(60,60,60,0.05) 1px, transparent 1px); background-size:100% 25%, 20% 100%; }
-    .graph-line { position:absolute; inset:18% 8% 16% 8%; }
-    .graph-line svg { width:100%; height:100%; }
-    .graph-line path { fill:none; stroke:var(--accent); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:1000; stroke-dashoffset:1000; animation: drawLine 1.8s .4s ease forwards; }
-    .graph-line circle { fill:#fff; stroke:var(--accent); stroke-width:3; opacity:0; animation: fadeIn .5s 1.8s ease forwards; }
-    .floating-card { position:absolute; min-width:150px; border-radius:20px; background:rgba(255,255,255,0.98); border:1px solid rgba(60,60,60,0.1); box-shadow:0 12px 24px rgba(0,0,0,0.08); padding:16px 18px; animation:bob 5.8s ease-in-out infinite; }
-    .floating-card small { display:block; color:var(--muted); font-size:.8rem; margin-bottom:6px; }
-    .floating-card strong,.metric-number,.experience-stat strong,.card-index,.career-arc-hero strong { font-family:"Times New Roman", Times, serif; }
-    .floating-card strong { font-size:1.6rem; }
-    .floating-card.top { top:88px; right:16px; }
-    .floating-card.bottom { left:18px; bottom:20px; animation-delay:.7s; }
     .metrics-grid,.expertise-grid,.services-grid,.experience-grid,.insights-grid { display:grid; gap:18px; }
-    .metrics-grid { grid-template-columns:repeat(4, minmax(0,1fr)); margin-top:-28px; position:relative; z-index:2; }
+    .metrics-grid { grid-template-columns:repeat(4, minmax(0,1fr)); }
     .card,.metric-card,.career-arc,.experience-panel,.experience-stat { background:var(--panel); backdrop-filter:blur(8px); border:1px solid rgba(60,60,60,0.08); box-shadow:var(--shadow); border-radius:var(--radius-md); }
     .metric-card { padding:28px 24px; display:grid; gap:10px; min-height:160px; }
-    .metric-number { font-size:clamp(2.4rem,4vw,3.2rem); letter-spacing:-.04em; font-weight:700; }
+    .metric-number { font-family:"Times New Roman", Times, serif; font-size:clamp(2.4rem,4vw,3.2rem); letter-spacing:-.04em; font-weight:700; }
     .metric-card small { color:var(--muted); font-size:.84rem; text-transform:uppercase; letter-spacing:.08em; }
     .expertise-grid,.services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .card { padding:28px; position:relative; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
     .card:hover,.card:focus-within { transform:translateY(-6px); box-shadow:0 22px 40px rgba(0,0,0,0.08); border-color:rgba(77,77,77,0.16); }
     .card::after { content:""; position:absolute; right:-26px; top:-26px; width:120px; height:120px; background:radial-gradient(circle, rgba(77,77,77,0.06), transparent 68%); pointer-events:none; }
     .card-topline { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:14px; }
-    .card-index { font-size:1.75rem; color:rgba(77,77,77,0.52); }
+    .card-index { font-family:"Times New Roman", Times, serif; font-size:1.75rem; color:rgba(77,77,77,0.52); }
     .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(77,77,77,0.08); color:var(--accent-strong); font-size:.82rem; font-weight:700; width:fit-content; margin-bottom:16px; }
     .service-list { margin:18px 0 0; padding-left:18px; color:var(--muted); }
     .experience-grid { grid-template-columns:1.1fr .9fr; align-items:start; }
@@ -96,21 +83,21 @@
     .experience-item::before { content:""; position:absolute; left:0; top:.7em; width:8px; height:8px; border-radius:50%; background:var(--accent); }
     .experience-stats { display:grid; gap:14px; }
     .experience-stat { padding:22px; }
-    .experience-stat strong { display:block; font-size:1.5rem; margin-bottom:8px; }
+    .experience-stat strong { display:block; font-family:"Times New Roman", Times, serif; font-size:1.5rem; margin-bottom:8px; }
     .insights-grid { grid-template-columns:.9fr 1.1fr; align-items:start; }
     .insight-categories { display:grid; gap:14px; }
     .insight-category,.insights-placeholder { padding:24px; border-radius:22px; background:rgba(255,255,255,0.96); border:1px solid rgba(60,60,60,0.08); box-shadow:var(--shadow); }
     .insights-placeholder { min-height:100%; display:grid; align-content:center; gap:14px; }
     .insights-placeholder strong { font-size:1.5rem; }
     .insights-placeholder code { display:inline-block; padding:8px 12px; border-radius:999px; background:rgba(77,77,77,0.06); font-size:.9rem; width:fit-content; }
-    .approach-notes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding:4px 4px 0; }
+    .approach-notes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding-top:10px; max-width: 920px; }
     .approach-note { padding-top:14px; border-top:1px solid rgba(60,60,60,0.1); }
     .approach-note strong { display:block; font-size:1.15rem; margin-bottom:6px; }
     .approach-note p { color:var(--muted); }
     .career-arc { padding:36px; border-radius:28px; background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(241,241,241,0.98)); }
     .career-arc-head { display:grid; gap:10px; margin-bottom:28px; }
     .career-arc-hero { display:grid; gap:8px; padding-bottom:22px; border-bottom:1px solid rgba(60,60,60,0.08); margin-bottom:30px; }
-    .career-arc-hero strong { font-size:clamp(2.1rem,4vw,3.4rem); line-height:1.04; }
+    .career-arc-hero strong { font-family:"Times New Roman", Times, serif; font-size:clamp(2.1rem,4vw,3.4rem); line-height:1.04; }
     .career-timeline { position:relative; display:grid; gap:30px; }
     .career-timeline::before { content:""; position:absolute; left:176px; top:6px; bottom:6px; width:2px; background:rgba(77,77,77,0.18); }
     .career-item { position:relative; display:grid; grid-template-columns:150px 24px minmax(0,1fr); gap:20px; align-items:start; }
@@ -130,11 +117,8 @@
     .footer-inner { display:flex; justify-content:space-between; gap:20px; align-items:center; border-top:1px solid rgba(60,60,60,0.08); padding-top:24px; flex-wrap:wrap; }
     .reveal { opacity:0; transform:translateY(28px); transition:opacity 700ms ease, transform 700ms ease; }
     .reveal.is-visible { opacity:1; transform:translateY(0); }
-    @keyframes drawLine { to { stroke-dashoffset:0; } }
-    @keyframes fadeIn { to { opacity:1; } }
-    @keyframes bob { 0%,100% { transform:translateY(0);} 50% { transform:translateY(-8px);} }
     @media (max-width: 980px) {
-      .hero-grid,.experience-grid,.insights-grid,.contact-wrap { grid-template-columns:1fr; }
+      .experience-grid,.insights-grid,.contact-wrap { grid-template-columns:1fr; }
       .metrics-grid,.expertise-grid,.services-grid,.approach-notes { grid-template-columns:1fr 1fr; }
       .career-timeline::before { left:10px; }
       .career-item { grid-template-columns:24px minmax(0,1fr); }
@@ -152,7 +136,6 @@
       .nav-links.is-open { display:flex; }
       .nav-links a { width:100%; }
       .hero { padding-top:24px; }
-      .hero-visual { min-height:420px; padding:22px; }
       .metrics-grid,.expertise-grid,.services-grid,.approach-notes { grid-template-columns:1fr; }
       .section-heading { flex-direction:column; align-items:start; }
       .career-arc { padding:24px; }
@@ -199,21 +182,6 @@
             <div class="cta-group">
               <a class="button button-primary" href="#contact">Work With Me 開始合作</a>
               <a class="button button-secondary" href="#expertise">View Expertise 查看專長</a>
-            </div>
-          </div>
-          <div class="hero-visual reveal" aria-hidden="true">
-            <div class="graph-wrap">
-              <div class="graph-grid"></div>
-              <div class="graph-line">
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <path d="M0,86 C12,82 20,72 30,66 C38,61 42,56 50,52 C62,45 67,33 76,28 C83,24 89,18 100,10"></path>
-                  <circle cx="30" cy="66" r="3"></circle>
-                  <circle cx="50" cy="52" r="3"></circle>
-                  <circle cx="76" cy="28" r="3"></circle>
-                </svg>
-              </div>
-              <div class="floating-card top"><small>ROAS trend</small><strong>100%+</strong></div>
-              <div class="floating-card bottom"><small>New users</small><strong>+100/day</strong></div>
             </div>
             <div class="approach-notes">
               <div class="approach-note"><strong>Signal Diagnosis</strong><p>釐清數據訊號與真正的問題來源。</p></div>
