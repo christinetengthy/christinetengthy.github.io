@@ -7,475 +7,888 @@
   <meta name="description" content="Christine Teng is an Ads & Growth Consultant specializing in ad analytics, attribution, incrementality, ROAS, and market insights across APAC and EU.">
   <style>
     :root {
-      --bg: #f7f7f7;
-      --panel: rgba(255,255,255,0.96);
+      --bg: #f6f6f4;
+      --panel: rgba(255, 255, 255, 0.96);
       --text: #1f1f1f;
       --muted: #666;
-      --line: rgba(60,60,60,0.12);
-      --accent: #4d4d4d;
+      --line: rgba(60, 60, 60, 0.12);
+      --accent: #4a4a4a;
       --accent-strong: #2f2f2f;
-      --shadow: 0 18px 36px rgba(0,0,0,0.06);
+      --shadow: 0 18px 36px rgba(0, 0, 0, 0.06);
       --radius-md: 20px;
       --max-width: 1180px;
-      --transition: 240ms ease;
+      --transition: 220ms ease;
     }
-    * { box-sizing: border-box; font-family: inherit; }
+
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body, button, input, textarea, select {
       margin: 0;
       font-family: "Times New Roman", Times, serif;
       color: var(--text);
     }
+
     body {
-      background: radial-gradient(circle at top left, rgba(220,220,220,0.35), transparent 28%), linear-gradient(180deg, #fff 0%, #f7f7f7 44%, #f1f1f1 100%);
+      background: radial-gradient(circle at top left, rgba(220, 220, 220, 0.35), transparent 28%), linear-gradient(180deg, #fff 0%, #f7f7f7 44%, #f1f1f1 100%);
       line-height: 1.6;
     }
+
     a { color: inherit; text-decoration: none; }
-    .page-shell { overflow-x: hidden; }
     .container { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
     .section { padding: 88px 0; }
-    .section-heading { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 32px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-strong); margin-bottom: 12px; }
-    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    h1,h2,h3,p { margin: 0; }
-    h1 { font-size: clamp(2.8rem, 6vw, 5.1rem); line-height: 1.03; letter-spacing: -.02em; font-weight: 700; }
-    h2 { font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.1; margin-bottom: 10px; font-weight: 700; }
-    h3 { font-size: 1.18rem; line-height: 1.35; font-weight: 700; }
     .muted { color: var(--muted); }
-    [data-lang] { display: none; }
-    body[data-lang="zh"] [data-lang="zh"] { display: initial; }
-    body[data-lang="en"] [data-lang="en"] { display: initial; }
-    body[data-lang="zh"] .lang-block[data-lang="zh"],
-    body[data-lang="en"] .lang-block[data-lang="en"] { display: block; }
-    body[data-lang="zh"] .lang-inline[data-lang="zh"],
-    body[data-lang="en"] .lang-inline[data-lang="en"] { display: inline; }
-    body[data-lang="zh"] .lang-inline-flex[data-lang="zh"],
-    body[data-lang="en"] .lang-inline-flex[data-lang="en"] { display: inline-flex; }
-    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(255,255,255,0.88); border-bottom: 1px solid rgba(60,60,60,0.08); }
-    .topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 20px; }
-    .brand { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
-    .brand strong { font-size: 1rem; letter-spacing: .05em; }
-    .brand span { font-size: .82rem; color: var(--muted); }
-    .topbar-actions { display:flex; align-items:center; gap:14px; }
-    .lang-switcher { display:inline-flex; padding:4px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,0.92); }
-    .lang-btn { border:0; background:transparent; color:var(--muted); padding:8px 14px; border-radius:999px; cursor:pointer; font-weight:700; transition: background var(--transition), color var(--transition); }
-    .lang-btn.is-active { background:var(--accent); color:#fff; }
-    .nav-toggle { display:none; border:1px solid var(--line); background:rgba(255,255,255,0.96); border-radius:999px; padding:12px 14px; color:var(--text); cursor:pointer; transition: transform var(--transition), background var(--transition); }
-    .nav-links { display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
-    .nav-links a { padding:10px 14px; border-radius:999px; font-size:.98rem; color:var(--muted); transition: background var(--transition), color var(--transition), transform var(--transition); }
-    .nav-links a:hover,.nav-links a:focus-visible { background: rgba(77,77,77,0.08); color:var(--text); transform:translateY(-1px); }
-    .nav-cta { background: var(--accent); color:#fff !important; box-shadow:0 10px 22px rgba(0,0,0,0.12); }
+
+    .lang-en, .lang-zh { display: none; }
+    body[data-language="en"] .lang-en { display: inline; }
+    body[data-language="zh"] .lang-zh { display: inline; }
+    body[data-language="en"] .lang-en.lang-block { display: block; }
+    body[data-language="zh"] .lang-zh.lang-block { display: block; }
+    body[data-language="en"] .lang-en.lang-inline-flex { display: inline-flex; }
+    body[data-language="zh"] .lang-zh.lang-inline-flex { display: inline-flex; }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.03;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    h3 {
+      font-size: 1.18rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-bottom: 12px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(60, 60, 60, 0.08);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .brand span {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-btn.is-active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .nav-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 999px;
+      padding: 12px 14px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      color: var(--muted);
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: rgba(77, 77, 77, 0.08);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
     .hero { padding: 52px 0 74px; }
-    .hero-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; align-items:start; }
-    .hero-copy { display:grid; gap:20px; max-width: 760px; }
-    .hero-copy .lead { font-size: clamp(1.08rem, 2vw, 1.3rem); color: var(--muted); max-width: 58ch; }
-    .cta-group,.contact-actions { display:flex; flex-wrap:wrap; gap:14px; }
-    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 20px; border-radius:999px; border:1px solid transparent; font-weight:700; transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition); }
-    .button:hover,.button:focus-visible { transform:translateY(-2px); }
-    .button-primary { background: var(--accent); color:#fff; box-shadow:0 16px 28px rgba(0,0,0,0.12); }
-    .button-secondary { background: rgba(255,255,255,0.96); border-color: var(--line); }
-    .metrics-grid,.expertise-grid,.services-grid,.experience-grid,.insights-grid { display:grid; gap:18px; }
-    .metrics-grid { grid-template-columns:repeat(4, minmax(0,1fr)); }
-    .card,.metric-card,.career-arc,.experience-panel,.experience-stat { background:var(--panel); backdrop-filter:blur(8px); border:1px solid rgba(60,60,60,0.08); box-shadow:var(--shadow); border-radius:var(--radius-md); }
-    .metric-card { padding:28px 24px; display:grid; gap:10px; min-height:160px; }
-    .metric-number { font-family:"Times New Roman", Times, serif; font-size:clamp(2.4rem,4vw,3.2rem); letter-spacing:-.04em; font-weight:700; }
-    .metric-card small { color:var(--muted); font-size:.84rem; text-transform:uppercase; letter-spacing:.08em; }
-    .expertise-grid,.services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .card { padding:28px; position:relative; overflow:hidden; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
-    .card:hover,.card:focus-within { transform:translateY(-6px); box-shadow:0 22px 40px rgba(0,0,0,0.08); border-color:rgba(77,77,77,0.16); }
-    .card::after { content:""; position:absolute; right:-26px; top:-26px; width:120px; height:120px; background:radial-gradient(circle, rgba(77,77,77,0.06), transparent 68%); pointer-events:none; }
-    .card-topline { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:14px; }
-    .card-index { font-family:"Times New Roman", Times, serif; font-size:1.75rem; color:rgba(77,77,77,0.52); }
-    .chip { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(77,77,77,0.08); color:var(--accent-strong); font-size:.82rem; font-weight:700; width:fit-content; margin-bottom:16px; }
-    .service-list { margin:18px 0 0; padding-left:18px; color:var(--muted); }
-    .experience-grid { grid-template-columns:1.1fr .9fr; align-items:start; }
-    .experience-panel { padding:28px; display:grid; gap:18px; }
-    .experience-list { display:grid; gap:14px; }
-    .experience-item { padding-left:18px; position:relative; }
-    .experience-item::before { content:""; position:absolute; left:0; top:.7em; width:8px; height:8px; border-radius:50%; background:var(--accent); }
-    .experience-stats { display:grid; gap:14px; }
-    .experience-stat { padding:22px; }
-    .experience-stat strong { display:block; font-family:"Times New Roman", Times, serif; font-size:1.5rem; margin-bottom:8px; }
-    .insights-grid { grid-template-columns:.9fr 1.1fr; align-items:start; }
-    .insight-categories { display:grid; gap:14px; }
-    .insight-category,.insights-placeholder { padding:24px; border-radius:22px; background:rgba(255,255,255,0.96); border:1px solid rgba(60,60,60,0.08); box-shadow:var(--shadow); }
-    .insights-placeholder { min-height:100%; display:grid; align-content:center; gap:14px; }
-    .insights-placeholder strong { font-size:1.5rem; }
-    .insights-placeholder code { display:inline-block; padding:8px 12px; border-radius:999px; background:rgba(77,77,77,0.06); font-size:.9rem; width:fit-content; }
-    .approach-notes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; padding-top:10px; max-width: 920px; }
-    .approach-note { padding-top:14px; border-top:1px solid rgba(60,60,60,0.1); }
-    .approach-note strong { display:block; font-size:1.15rem; margin-bottom:6px; }
-    .approach-note p { color:var(--muted); }
-    .career-arc { padding:36px; border-radius:28px; background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(241,241,241,0.98)); }
-    .career-arc-head { display:grid; gap:10px; margin-bottom:28px; }
-    .career-arc-hero { display:grid; gap:8px; padding-bottom:22px; border-bottom:1px solid rgba(60,60,60,0.08); margin-bottom:30px; }
-    .career-arc-hero strong { font-family:"Times New Roman", Times, serif; font-size:clamp(2.1rem,4vw,3.4rem); line-height:1.04; }
-    .career-timeline { position:relative; display:grid; gap:30px; }
-    .career-timeline::before { content:""; position:absolute; left:176px; top:6px; bottom:6px; width:2px; background:rgba(77,77,77,0.18); }
-    .career-item { position:relative; display:grid; grid-template-columns:150px 24px minmax(0,1fr); gap:20px; align-items:start; }
-    .career-meta { text-align:right; padding-top:4px; }
-    .career-year { font-size:1.05rem; font-weight:700; color:var(--accent-strong); }
-    .career-company { margin-top:6px; font-size:.95rem; color:var(--muted); }
-    .career-dot { position:relative; width:24px; height:24px; display:grid; place-items:center; margin-top:2px; z-index:1; }
-    .career-dot::before { content:""; width:22px; height:22px; border-radius:50%; border:2px solid var(--accent); background:#fff; box-shadow:0 0 0 4px rgba(255,255,255,0.95); }
-    .career-content h3 { font-size:1.8rem; line-height:1.15; margin-bottom:8px; }
-    .career-subtitle { font-style:italic; color:var(--muted); margin-bottom:14px; }
-    .career-tags { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
-    .career-tag { padding:8px 12px; border-radius:10px; background:rgba(77,77,77,0.06); border:1px solid rgba(60,60,60,0.08); color:var(--accent-strong); font-size:.92rem; font-weight:700; }
-    .contact-wrap { padding:38px; border-radius:30px; background:linear-gradient(135deg, rgba(242,242,242,0.98), rgba(255,255,255,0.98)); border:1px solid rgba(60,60,60,0.08); display:grid; grid-template-columns:1fr auto; align-items:center; gap:24px; }
-    .form-feedback { margin-top:16px; display:inline-flex; align-items:center; gap:8px; padding:12px 14px; border-radius:14px; background:rgba(255,255,255,0.98); border:1px solid rgba(60,60,60,0.08); color:var(--muted); opacity:0; transform:translateY(6px); transition:opacity var(--transition), transform var(--transition); }
-    .form-feedback.is-visible { opacity:1; transform:translateY(0); }
-    .footer { padding:34px 0 48px; color:var(--muted); font-size:.94rem; }
-    .footer-inner { display:flex; justify-content:space-between; gap:20px; align-items:center; border-top:1px solid rgba(60,60,60,0.08); padding-top:24px; flex-wrap:wrap; }
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity 700ms ease, transform 700ms ease; }
-    .reveal.is-visible { opacity:1; transform:translateY(0); }
+    .hero-copy {
+      display: grid;
+      gap: 20px;
+      max-width: 760px;
+    }
+    .hero-copy .lead {
+      font-size: clamp(1.08rem, 2vw, 1.3rem);
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .cta-group, .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+    .button:hover,
+    .button:focus-visible { transform: translateY(-2px); }
+    .button-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+    }
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.96);
+      border-color: var(--line);
+    }
+
+    .approach-notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      padding-top: 10px;
+      max-width: 920px;
+    }
+    .approach-note {
+      padding-top: 14px;
+      border-top: 1px solid rgba(60, 60, 60, 0.1);
+    }
+    .approach-note strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+    .approach-note p { color: var(--muted); }
+
+    .metrics-grid,
+    .expertise-grid,
+    .services-grid,
+    .experience-grid,
+    .insights-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .expertise-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .experience-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+    .insights-grid { grid-template-columns: 0.9fr 1.1fr; align-items: start; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .card,
+    .metric-card,
+    .career-arc,
+    .experience-panel,
+    .experience-stat,
+    .insight-category,
+    .insights-placeholder,
+    .contact-wrap {
+      background: var(--panel);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(60, 60, 60, 0.08);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-md);
+    }
+
+    .metric-card {
+      padding: 28px 24px;
+      display: grid;
+      gap: 10px;
+      min-height: 160px;
+    }
+    .metric-number {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+    .metric-card small {
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.08);
+      border-color: rgba(77, 77, 77, 0.16);
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      right: -26px;
+      top: -26px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(77, 77, 77, 0.06), transparent 68%);
+      pointer-events: none;
+    }
+    .card-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .card-index {
+      font-size: 1.75rem;
+      color: rgba(77, 77, 77, 0.52);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(77, 77, 77, 0.08);
+      color: var(--accent-strong);
+      font-size: 0.82rem;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .experience-panel,
+    .insight-category,
+    .insights-placeholder {
+      padding: 24px;
+    }
+    .experience-list {
+      display: grid;
+      gap: 14px;
+    }
+    .experience-item {
+      padding-left: 18px;
+      position: relative;
+    }
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .experience-stats { display: grid; gap: 14px; }
+    .experience-stat { padding: 22px; }
+    .experience-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .career-arc {
+      padding: 36px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 241, 241, 0.98));
+    }
+    .career-arc-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .career-arc-hero {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(60, 60, 60, 0.08);
+      margin-bottom: 30px;
+    }
+    .career-arc-hero strong {
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1.04;
+    }
+    .career-timeline {
+      position: relative;
+      display: grid;
+      gap: 30px;
+    }
+    .career-timeline::before {
+      content: "";
+      position: absolute;
+      left: 176px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: rgba(77, 77, 77, 0.18);
+    }
+    .career-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 150px 24px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .career-meta {
+      text-align: right;
+      padding-top: 4px;
+    }
+    .career-year {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+    .career-company {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .career-dot {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      margin-top: 2px;
+      z-index: 1;
+    }
+    .career-dot::before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.95);
+    }
+    .career-content h3 {
+      font-size: 1.8rem;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .career-subtitle {
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-wrap {
+      padding: 38px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(242, 242, 242, 0.98), rgba(255, 255, 255, 0.98));
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    .form-feedback {
+      margin-top: 16px;
+      display: none;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(60, 60, 60, 0.08);
+      color: var(--muted);
+    }
+    .form-feedback.is-visible { display: inline-flex; }
+
+    .footer {
+      padding: 34px 0 48px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid rgba(60, 60, 60, 0.08);
+      padding-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 980px) {
-      .experience-grid,.insights-grid,.contact-wrap { grid-template-columns:1fr; }
-      .metrics-grid,.expertise-grid,.services-grid,.approach-notes { grid-template-columns:1fr 1fr; }
-      .career-timeline::before { left:10px; }
-      .career-item { grid-template-columns:24px minmax(0,1fr); }
-      .career-meta { grid-column:2; text-align:left; margin-bottom:8px; padding-top:0; }
-      .career-dot { grid-row:1 / span 2; }
-      .career-content { grid-column:2; }
-      .section { padding:72px 0; }
-      .contact-actions { justify-content:flex-start; }
+      .metrics-grid,
+      .expertise-grid,
+      .services-grid,
+      .approach-notes { grid-template-columns: 1fr 1fr; }
+      .experience-grid,
+      .insights-grid,
+      .contact-wrap { grid-template-columns: 1fr; }
+      .career-timeline::before { left: 10px; }
+      .career-item { grid-template-columns: 24px minmax(0, 1fr); }
+      .career-meta {
+        grid-column: 2;
+        text-align: left;
+        margin-bottom: 8px;
+        padding-top: 0;
+      }
+      .career-dot { grid-row: 1 / span 2; }
+      .career-content { grid-column: 2; }
+      .section { padding: 72px 0; }
+      .contact-actions { justify-content: flex-start; }
     }
+
     @media (max-width: 760px) {
-      .container { width:min(var(--max-width), calc(100% - 24px)); }
-      .topbar-inner { min-height:72px; align-items:flex-start; padding:12px 0; }
-      .topbar-actions { width:100%; justify-content:flex-end; flex-wrap:wrap; }
-      .nav-toggle { display:inline-flex; }
-      .lang-switcher { order:-1; }
-      .nav-links { position:absolute; left:12px; right:12px; top:calc(100% + 10px); background:rgba(255,255,255,0.98); border:1px solid rgba(60,60,60,0.1); box-shadow:var(--shadow); border-radius:24px; padding:12px; display:none; flex-direction:column; align-items:stretch; }
-      .nav-links.is-open { display:flex; }
-      .nav-links a { width:100%; }
-      .hero { padding-top:24px; }
-      .metrics-grid,.expertise-grid,.services-grid,.approach-notes { grid-template-columns:1fr; }
-      .section-heading { flex-direction:column; align-items:start; }
-      .career-arc { padding:24px; }
-      .career-content h3 { font-size:1.45rem; }
-      .contact-wrap { padding:28px 22px; }
+      .container { width: min(var(--max-width), calc(100% - 24px)); }
+      .topbar-inner {
+        min-height: 72px;
+        align-items: flex-start;
+        padding: 12px 0;
+      }
+      .topbar-actions {
+        width: 100%;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+      .lang-switcher { order: -1; }
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        top: calc(100% + 10px);
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid rgba(60, 60, 60, 0.1);
+        box-shadow: var(--shadow);
+        border-radius: 24px;
+        padding: 12px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { width: 100%; }
+      .hero { padding-top: 24px; }
+      .metrics-grid,
+      .expertise-grid,
+      .services-grid,
+      .approach-notes { grid-template-columns: 1fr; }
+      .section-heading { flex-direction: column; align-items: start; }
+      .career-arc { padding: 24px; }
+      .career-content h3 { font-size: 1.45rem; }
+      .contact-wrap { padding: 28px 22px; }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior:auto; }
-      *,*::before,*::after { animation:none !important; transition-duration:.01ms !important; transition-delay:0ms !important; }
-      .reveal,.reveal.is-visible,.form-feedback,.form-feedback.is-visible { opacity:1; transform:none; }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+      }
+      .reveal, .reveal.is-visible { opacity: 1; transform: none; }
     }
   </style>
 </head>
-<body data-lang="zh">
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="#home" aria-label="Christine Teng home">
-          <strong>Christine Teng</strong>
-          <span>
-            <span class="lang-inline" data-lang="en">Ads &amp; Growth Consultant</span>
-            <span class="lang-inline" data-lang="zh">廣告成效分析與成長顧問</span>
+<body data-language="zh">
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#home" aria-label="Christine Teng home">
+        <strong>Christine Teng</strong>
+        <span>
+          <span class="lang-en">Ads &amp; Growth Consultant</span>
+          <span class="lang-zh">廣告成效分析與成長顧問</span>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <div class="lang-switcher" aria-label="Language switcher">
+          <button class="lang-btn" type="button" data-set-language="en">EN</button>
+          <button class="lang-btn is-active" type="button" data-set-language="zh">中文</button>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="lang-en">Menu</span>
+          <span class="lang-zh">選單</span>
+        </button>
+        <nav class="nav-links" id="site-nav" aria-label="Primary navigation">
+          <a href="#expertise"><span class="lang-en">Expertise</span><span class="lang-zh">專長</span></a>
+          <a href="#services"><span class="lang-en">Services</span><span class="lang-zh">服務</span></a>
+          <a href="#experience"><span class="lang-en">Experience</span><span class="lang-zh">經驗</span></a>
+          <a href="#insights"><span class="lang-en">Insights</span><span class="lang-zh">專欄</span></a>
+          <a href="#about"><span class="lang-en">About</span><span class="lang-zh">關於我</span></a>
+          <a href="#contact" class="nav-cta"><span class="lang-en">Contact</span><span class="lang-zh">聯絡我</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">
+            <span class="lang-en">Ads &amp; Growth Consultant</span>
+            <span class="lang-zh">廣告成效分析與成長顧問</span>
           </span>
-        </a>
-        <div class="topbar-actions">
-          <div class="lang-switcher" role="tablist" aria-label="Language switcher">
-            <button class="lang-btn" type="button" data-set-lang="en">EN</button>
-            <button class="lang-btn is-active" type="button" data-set-lang="zh">中文</button>
+          <div>
+            <h1>
+              <span class="lang-en">Turning ad performance into decisions you can trust.</span>
+              <span class="lang-zh">看懂廣告成效，做出更好的成長決策。</span>
+            </h1>
           </div>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-            <span class="lang-inline" data-lang="en">Menu</span>
-            <span class="lang-inline" data-lang="zh">選單</span>
-          </button>
-          <nav class="nav-links" id="site-nav" aria-label="Primary">
-            <a href="#expertise"><span class="lang-inline" data-lang="en">Expertise</span><span class="lang-inline" data-lang="zh">專長</span></a>
-            <a href="#services"><span class="lang-inline" data-lang="en">Services</span><span class="lang-inline" data-lang="zh">服務</span></a>
-            <a href="#experience"><span class="lang-inline" data-lang="en">Experience</span><span class="lang-inline" data-lang="zh">經驗</span></a>
-            <a href="#insights"><span class="lang-inline" data-lang="en">Insights</span><span class="lang-inline" data-lang="zh">專欄</span></a>
-            <a href="#about"><span class="lang-inline" data-lang="en">About</span><span class="lang-inline" data-lang="zh">關於我</span></a>
-            <a href="#contact" class="nav-cta"><span class="lang-inline" data-lang="en">Contact</span><span class="lang-inline" data-lang="zh">聯絡我</span></a>
-          </nav>
+          <p class="lead">
+            <span class="lang-en">From RTB to attribution and incrementality, I help brands read the real story behind their media performance.</span>
+            <span class="lang-zh">從 RTB、attribution 到 incrementality，我協助品牌看懂媒體成效背後真正的商業意義。</span>
+          </p>
+          <p class="lead muted">
+            <span class="lang-en">I focus on performance analysis, strategic planning, and growth recommendations that are clear enough to guide action.</span>
+            <span class="lang-zh">我專注於成效分析、策略規劃與成長建議，讓數據可以真正支持後續行動。</span>
+          </p>
+          <div class="cta-group">
+            <a class="button button-primary" href="#contact"><span class="lang-en">Book a Consultation</span><span class="lang-zh">預約諮詢</span></a>
+            <a class="button button-secondary" href="#expertise"><span class="lang-en">View Expertise</span><span class="lang-zh">查看專長</span></a>
+          </div>
+          <div class="approach-notes">
+            <div class="approach-note">
+              <strong><span class="lang-en">Signal Diagnosis</span><span class="lang-zh">訊號診斷</span></strong>
+              <p><span class="lang-en">Clarify which signals matter and where the real performance issue begins.</span><span class="lang-zh">釐清哪些數據訊號最重要，以及問題真正從哪裡開始。</span></p>
+            </div>
+            <div class="approach-note">
+              <strong><span class="lang-en">Performance Interpretation</span><span class="lang-zh">成效解讀</span></strong>
+              <p><span class="lang-en">Translate media data into business insight that teams can actually use.</span><span class="lang-zh">把媒體數據轉成團隊能採取行動的商業洞察。</span></p>
+            </div>
+            <div class="approach-note">
+              <strong><span class="lang-en">Strategic Recommendation</span><span class="lang-zh">策略建議</span></strong>
+              <p><span class="lang-en">Recommend practical next steps for performance improvement and growth.</span><span class="lang-zh">提出可執行的優化方向與成長建議。</span></p>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
-    <main id="home">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <span class="eyebrow">
-              <span class="lang-inline" data-lang="en">Ads &amp; Growth Consultant</span>
-              <span class="lang-inline" data-lang="zh">廣告成效分析與成長顧問</span>
-            </span>
-            <div>
-              <h1>
-                <span class="lang-inline" data-lang="en">Turning ad performance into decisions you can trust.</span>
-                <span class="lang-inline" data-lang="zh">看懂廣告成效，做出更好的成長決策。</span>
-              </h1>
-            </div>
-            <p class="lead">
-              <span class="lang-inline" data-lang="en">From RTB to attribution and incrementality, I help brands read the real story behind their media performance.</span>
-              <span class="lang-inline" data-lang="zh">從 RTB、attribution 到 incrementality，我協助品牌看懂媒體成效背後真正的商業意義。</span>
-            </p>
-            <p class="lead muted">
-              <span class="lang-inline" data-lang="en">I focus on performance analysis, strategic planning, and growth recommendations that are clear enough to guide action.</span>
-              <span class="lang-inline" data-lang="zh">我專注於成效分析、策略規劃與成長建議，讓數據可以真正支持後續行動。</span>
-            </p>
-            <div class="cta-group">
-              <a class="button button-primary" href="#contact"><span class="lang-inline" data-lang="en">Book a Consultation</span><span class="lang-inline" data-lang="zh">預約諮詢</span></a>
-              <a class="button button-secondary" href="#expertise"><span class="lang-inline" data-lang="en">View Expertise</span><span class="lang-inline" data-lang="zh">查看專長</span></a>
-            </div>
-            <div class="approach-notes">
-              <div class="approach-note">
-                <strong><span class="lang-inline" data-lang="en">Signal Diagnosis</span><span class="lang-inline" data-lang="zh">訊號診斷</span></strong>
-                <p><span class="lang-inline" data-lang="en">Clarify which signals matter and where the real performance issue begins.</span><span class="lang-inline" data-lang="zh">釐清哪些數據訊號最重要，以及問題真正從哪裡開始。</span></p>
-              </div>
-              <div class="approach-note">
-                <strong><span class="lang-inline" data-lang="en">Performance Interpretation</span><span class="lang-inline" data-lang="zh">成效解讀</span></strong>
-                <p><span class="lang-inline" data-lang="en">Translate media data into business insight that teams can actually use.</span><span class="lang-inline" data-lang="zh">把媒體數據轉成團隊能採取行動的商業洞察。</span></p>
-              </div>
-              <div class="approach-note">
-                <strong><span class="lang-inline" data-lang="en">Strategic Recommendation</span><span class="lang-inline" data-lang="zh">策略建議</span></strong>
-                <p><span class="lang-inline" data-lang="en">Recommend practical next steps for performance improvement and growth.</span><span class="lang-inline" data-lang="zh">提出可執行的優化方向與成長建議。</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    </section>
 
-      <section class="container">
-        <div class="metrics-grid">
-          <article class="metric-card reveal">
-            <small><span class="lang-inline" data-lang="en">ROAS</span><span class="lang-inline" data-lang="zh">ROAS</span></small>
-            <div class="metric-number" data-count="100" data-prefix="" data-suffix="%+">0</div>
-            <p class="muted"><span class="lang-inline" data-lang="en">Consistently maintained 100%+ return performance.</span><span class="lang-inline" data-lang="zh">穩定達成 100%+ 回報表現。</span></p>
+    <section class="container">
+      <div class="metrics-grid">
+        <article class="metric-card reveal">
+          <small><span class="lang-en">ROAS</span><span class="lang-zh">ROAS</span></small>
+          <div class="metric-number" data-count="100" data-prefix="" data-suffix="%+">0</div>
+          <p class="muted"><span class="lang-en">Consistently maintained 100%+ return performance.</span><span class="lang-zh">穩定達成 100%+ 回報表現。</span></p>
+        </article>
+        <article class="metric-card reveal">
+          <small><span class="lang-en">New Users</span><span class="lang-zh">新用戶</span></small>
+          <div class="metric-number" data-count="100" data-prefix="+" data-suffix="/day">0</div>
+          <p class="muted"><span class="lang-en">Drove steady daily new-user acquisition.</span><span class="lang-zh">穩定帶動每日新用戶成長。</span></p>
+        </article>
+        <article class="metric-card reveal">
+          <small><span class="lang-en">Budget Scale</span><span class="lang-zh">預算規模</span></small>
+          <div class="metric-number" data-count="7" data-prefix="" data-suffix="-digit">0</div>
+          <p class="muted"><span class="lang-en">Managed seven-digit monthly media budgets.</span><span class="lang-zh">每月負責百萬級以上投放預算管理。</span></p>
+        </article>
+        <article class="metric-card reveal">
+          <small><span class="lang-en">Market Scope</span><span class="lang-zh">市場範圍</span></small>
+          <div class="metric-number" data-count="3" data-prefix="" data-suffix="+ years">0</div>
+          <p class="muted"><span class="lang-en">Cross-market experience across APAC and EU.</span><span class="lang-zh">具備 APAC × EU 跨市場經驗。</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="expertise">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow"><span class="lang-en">Expertise</span><span class="lang-zh">專長</span></span>
+            <h2><span class="lang-en">Structured thinking for performance, measurement, and growth.</span><span class="lang-zh">以系統化方法處理成效、衡量與成長議題。</span></h2>
+          </div>
+          <p class="muted" style="max-width: 46ch;"><span class="lang-en">I turn ad analytics, planning, optimization, and scaling into a consulting framework teams can trust.</span><span class="lang-zh">將廣告數據分析、策略規劃、成效優化與成長策略整理成更清楚的方法框架，讓團隊更容易理解與採用。</span></p>
+        </div>
+        <div class="expertise-grid">
+          <article class="card reveal">
+            <div class="card-topline"><span class="chip"><span class="lang-en">Ad Data Analytics</span><span class="lang-zh">廣告數據分析</span></span><span class="card-index">01</span></div>
+            <h3>RTB / MMP / Attribution</h3>
+            <p class="muted"><span class="lang-en">Read beyond dashboards and identify the real driver of performance.</span><span class="lang-zh">拆解數據訊號，理解廣告成效背後真正的原因。</span></p>
           </article>
-          <article class="metric-card reveal">
-            <small><span class="lang-inline" data-lang="en">New Users</span><span class="lang-inline" data-lang="zh">新用戶</span></small>
-            <div class="metric-number" data-count="100" data-prefix="+" data-suffix="/day">0</div>
-            <p class="muted"><span class="lang-inline" data-lang="en">Drove steady daily new-user acquisition.</span><span class="lang-inline" data-lang="zh">穩定帶動每日新用戶成長。</span></p>
+          <article class="card reveal">
+            <div class="card-topline"><span class="chip"><span class="lang-en">Strategy Planning</span><span class="lang-zh">廣告策略規劃</span></span><span class="card-index">02</span></div>
+            <h3>User Acquisition / Retention</h3>
+            <p class="muted"><span class="lang-en">Build acquisition and retention plans that stay aligned with business priorities.</span><span class="lang-zh">從新客取得到用戶留存，建立更穩定的成長策略。</span></p>
           </article>
-          <article class="metric-card reveal">
-            <small><span class="lang-inline" data-lang="en">Budget Scale</span><span class="lang-inline" data-lang="zh">預算規模</span></small>
-            <div class="metric-number" data-count="7" data-prefix="" data-suffix="-digit">0</div>
-            <p class="muted"><span class="lang-inline" data-lang="en">Managed seven-digit monthly media budgets.</span><span class="lang-inline" data-lang="zh">每月負責百萬級以上投放預算管理。</span></p>
+          <article class="card reveal">
+            <div class="card-topline"><span class="chip"><span class="lang-en">Performance Optimization</span><span class="lang-zh">成效優化</span></span><span class="card-index">03</span></div>
+            <h3>ROAS / LTV / Incrementality</h3>
+            <p class="muted"><span class="lang-en">Evaluate efficiency with a broader lens instead of relying on surface-level metrics.</span><span class="lang-zh">不只看表面數字，而是判讀哪些投放真正帶來有效增長。</span></p>
           </article>
-          <article class="metric-card reveal">
-            <small><span class="lang-inline" data-lang="en">Market Scope</span><span class="lang-inline" data-lang="zh">市場範圍</span></small>
-            <div class="metric-number" data-count="3" data-prefix="" data-suffix="+ years">0</div>
-            <p class="muted"><span class="lang-inline" data-lang="en">Cross-market experience across APAC and EU.</span><span class="lang-inline" data-lang="zh">具備 APAC × EU 跨市場經驗。</span></p>
+          <article class="card reveal">
+            <div class="card-topline"><span class="chip"><span class="lang-en">Scaling Strategy</span><span class="lang-zh">預算配置與成長策略</span></span><span class="card-index">04</span></div>
+            <h3>Budget Allocation / Growth Planning</h3>
+            <p class="muted"><span class="lang-en">Shape budget plans that balance experimentation, efficiency, and growth pressure.</span><span class="lang-zh">協助品牌在有限預算中找到更有效率的放大方式。</span></p>
           </article>
-        </div>
-      </section>
-
-      <section class="section" id="expertise">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Expertise</span><span class="lang-inline" data-lang="zh">專長</span></span>
-              <h2><span class="lang-inline" data-lang="en">Structured thinking for performance, measurement, and growth.</span><span class="lang-inline" data-lang="zh">以系統化方法處理成效、衡量與成長議題。</span></h2>
-            </div>
-            <p class="muted" style="max-width:46ch;"><span class="lang-inline" data-lang="en">I turn ad analytics, planning, optimization, and scaling into a clearer consulting framework that teams can trust.</span><span class="lang-inline" data-lang="zh">將廣告數據分析、策略規劃、成效優化與成長策略整理成更清楚的方法框架，讓團隊更容易理解與採用。</span></p>
-          </div>
-          <div class="expertise-grid">
-            <article class="card reveal">
-              <div class="card-topline"><span class="chip"><span class="lang-inline" data-lang="en">Ad Data Analytics</span><span class="lang-inline" data-lang="zh">廣告數據分析</span></span><span class="card-index">01</span></div>
-              <h3>RTB / MMP / Attribution</h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Read beyond dashboards and identify the real driver of performance.</span><span class="lang-inline" data-lang="zh">拆解數據訊號，理解廣告成效背後真正的原因。</span></p>
-            </article>
-            <article class="card reveal">
-              <div class="card-topline"><span class="chip"><span class="lang-inline" data-lang="en">Strategy Planning</span><span class="lang-inline" data-lang="zh">廣告策略規劃</span></span><span class="card-index">02</span></div>
-              <h3>User Acquisition / Retention</h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Build acquisition and retention plans that stay aligned with business priorities.</span><span class="lang-inline" data-lang="zh">從新客取得到用戶留存，建立更穩定的成長策略。</span></p>
-            </article>
-            <article class="card reveal">
-              <div class="card-topline"><span class="chip"><span class="lang-inline" data-lang="en">Performance Optimization</span><span class="lang-inline" data-lang="zh">成效優化</span></span><span class="card-index">03</span></div>
-              <h3>ROAS / LTV / Incrementality</h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Evaluate efficiency with a broader lens instead of relying on surface-level metrics.</span><span class="lang-inline" data-lang="zh">不只看表面數字，而是判讀哪些投放真正帶來有效增長。</span></p>
-            </article>
-            <article class="card reveal">
-              <div class="card-topline"><span class="chip"><span class="lang-inline" data-lang="en">Scaling Strategy</span><span class="lang-inline" data-lang="zh">預算配置與成長策略</span></span><span class="card-index">04</span></div>
-              <h3>Budget Allocation / Growth Planning</h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Shape budget plans that balance experimentation, efficiency, and growth pressure.</span><span class="lang-inline" data-lang="zh">協助品牌在有限預算中找到更有效率的放大方式。</span></p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="services">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Services</span><span class="lang-inline" data-lang="zh">服務</span></span>
-              <h2><span class="lang-inline" data-lang="en">Support that moves from execution to strategic diagnosis.</span><span class="lang-inline" data-lang="zh">從投放執行到策略診斷的整合支援。</span></h2>
-            </div>
-            <p class="muted" style="max-width:48ch;"><span class="lang-inline" data-lang="en">My current focus is on campaign execution support and performance consulting for brands that want clearer decisions.</span><span class="lang-inline" data-lang="zh">目前聚焦於廣告投手支援與成效分析顧問服務，協助品牌做出更清楚的投放與成長決策。</span></p>
-          </div>
-          <div class="services-grid">
-            <article class="card reveal">
-              <span class="chip"><span class="lang-inline" data-lang="en">Ads Operation Support</span><span class="lang-inline" data-lang="zh">廣告投手支援</span></span>
-              <h3><span class="lang-inline" data-lang="en">Campaign execution with disciplined optimization.</span><span class="lang-inline" data-lang="zh">有節奏、有紀律的廣告執行與優化。</span></h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Handle campaign execution, daily optimization, and ongoing monitoring to keep accounts stable.</span><span class="lang-inline" data-lang="zh">執行廣告投放、日常優化與數據監控，讓帳戶表現更穩定。</span></p>
-            </article>
-            <article class="card reveal">
-              <span class="chip"><span class="lang-inline" data-lang="en">Performance Marketing Consultant</span><span class="lang-inline" data-lang="zh">廣告成效分析顧問</span></span>
-              <h3><span class="lang-inline" data-lang="en">Diagnostic thinking for better budget and growth decisions.</span><span class="lang-inline" data-lang="zh">用診斷式思考支持更好的預算與成長決策。</span></h3>
-              <p class="muted"><span class="lang-inline" data-lang="en">Translate data, diagnose performance, and recommend stronger next steps for growth.</span><span class="lang-inline" data-lang="zh">從數據解讀、投放診斷到成長建議，協助品牌找到真正有效的策略。</span></p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="experience">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Experience</span><span class="lang-inline" data-lang="zh">經驗</span></span>
-              <h2><span class="lang-inline" data-lang="en">Experience shaped by performance optimization and growth strategy.</span><span class="lang-inline" data-lang="zh">以成效優化與成長策略為核心的實戰經驗。</span></h2>
-            </div>
-            <p class="muted" style="max-width:48ch;"><span class="lang-inline" data-lang="en">These examples are anonymized to keep client details private while preserving the strategic outcomes.</span><span class="lang-inline" data-lang="zh">以下以匿名方式呈現實戰經驗，在保留專業成果的同時避免揭露客戶名稱。</span></p>
-          </div>
-          <div class="experience-grid">
-            <article class="experience-panel reveal">
-              <span class="chip"><span class="lang-inline" data-lang="en">Selected Experience</span><span class="lang-inline" data-lang="zh">精選經驗</span></span>
-              <div class="experience-list">
-                <div class="experience-item"><span class="lang-inline" data-lang="en">Served global ecommerce, gaming, and lifestyle-service brands with a focus on optimization and growth strategy.</span><span class="lang-inline" data-lang="zh">曾服務全球電商、遊戲與生活服務品牌，專注於成效優化與成長策略。</span></div>
-                <div class="experience-item"><span class="lang-inline" data-lang="en">Led a major European food-delivery account and lifted monthly revenue growth to 2.3x with incremental uplift above 40%.</span><span class="lang-inline" data-lang="zh">曾操盤歐洲大型 food delivery 客戶，提升月營收增長 2.3x，incremental uplift &gt;40%。</span></div>
-                <div class="experience-item"><span class="lang-inline" data-lang="en">Maintained re-engagement ROAS above 130% for a large U.S. casual gaming client.</span><span class="lang-inline" data-lang="zh">為美國大型休閒遊戲客戶，維持舊用戶喚醒 ROAS &gt;130%。</span></div>
-                <div class="experience-item"><span class="lang-inline" data-lang="en">Delivered ROAS above 100% and over 100 daily new users for a well-known Asian gaming brand.</span><span class="lang-inline" data-lang="zh">為亞洲知名遊戲商達成 ROAS &gt;100% 且每日 &gt;100 位 new user acquisition。</span></div>
-              </div>
-            </article>
-            <div class="experience-stats">
-              <article class="experience-stat reveal"><strong>2.3x Monthly Revenue Growth</strong><p class="muted"><span class="lang-inline" data-lang="en">Revenue scale-up delivered for a major European food-delivery account.</span><span class="lang-inline" data-lang="zh">歐洲大型 food delivery 客戶月營收增長 2.3x。</span></p></article>
-              <article class="experience-stat reveal"><strong>&gt;40% Incremental Uplift</strong><p class="muted"><span class="lang-inline" data-lang="en">Measured success through incrementality, not only surface-level ROAS.</span><span class="lang-inline" data-lang="zh">以增量視角衡量投放成效，而不只停留在表面 ROAS。</span></p></article>
-              <article class="experience-stat reveal"><strong>&gt;130% Re-engagement ROAS</strong><p class="muted"><span class="lang-inline" data-lang="en">Strong re-engagement efficiency maintained for a U.S. gaming client.</span><span class="lang-inline" data-lang="zh">美國大型休閒遊戲客戶舊用戶喚醒效益維持強勢表現。</span></p></article>
-              <article class="experience-stat reveal"><strong>&gt;100 Daily New Users</strong><p class="muted"><span class="lang-inline" data-lang="en">Consistent daily acquisition volume delivered for a major Asian gaming brand.</span><span class="lang-inline" data-lang="zh">亞洲知名遊戲商每日新客獲取穩定放量。</span></p></article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="insights">
-        <div class="container">
-          <div class="section-heading reveal">
-            <div>
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Insights</span><span class="lang-inline" data-lang="zh">專欄</span></span>
-              <h2><span class="lang-inline" data-lang="en">Thoughts on ads, growth, and market trends.</span><span class="lang-inline" data-lang="zh">關於廣告、成長與市場趨勢的觀察。</span></h2>
-            </div>
-            <p class="muted" style="max-width:48ch;"><span class="lang-inline" data-lang="en">This section is being prepared and will expand over time by category.</span><span class="lang-inline" data-lang="zh">專欄內容正在籌備中，未來會依照分類持續擴充。</span></p>
-          </div>
-          <div class="insights-grid">
-            <div class="insight-categories">
-              <article class="insight-category reveal">
-                <span class="chip"><span class="lang-inline" data-lang="en">Ad Analysis</span><span class="lang-inline" data-lang="zh">廣告分析</span></span>
-                <p><span class="lang-inline" data-lang="en">Campaign logic, performance reading, attribution, and optimization strategy.</span><span class="lang-inline" data-lang="zh">拆解投放邏輯、成效判讀、歸因分析與優化策略。</span></p>
-              </article>
-              <article class="insight-category reveal">
-                <span class="chip"><span class="lang-inline" data-lang="en">Market Updates</span><span class="lang-inline" data-lang="zh">市場動態</span></span>
-                <p><span class="lang-inline" data-lang="en">Digital marketing, ecommerce trends, and market observations from Taiwan and abroad.</span><span class="lang-inline" data-lang="zh">數位行銷、電商趨勢與國內外市場觀察。</span></p>
-              </article>
-            </div>
-            <article class="insights-placeholder reveal">
-              <span class="chip"><span class="lang-inline" data-lang="en">Coming Soon</span><span class="lang-inline" data-lang="zh">正在籌備中</span></span>
-              <strong><span class="lang-inline" data-lang="en">The first articles will appear here once the structure is ready.</span><span class="lang-inline" data-lang="zh">專欄內容整理中，未來文章會從這裡持續上線。</span></strong>
-              <p class="muted"><span class="lang-inline" data-lang="en">Planned structure: /insights/post-slug</span><span class="lang-inline" data-lang="zh">規劃結構：/insights/post-slug</span></p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="about">
-        <div class="container">
-          <article class="career-arc reveal">
-            <div class="career-arc-head">
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Career Arc</span><span class="lang-inline" data-lang="zh">經歷軌跡</span></span>
-              <div class="career-arc-hero">
-                <strong><span class="lang-inline" data-lang="en">3+ years across APAC and EU.</span><span class="lang-inline" data-lang="zh">3+ 年 APAC × EU 跨市場經驗。</span></strong>
-                <p class="muted"><span class="lang-inline" data-lang="en">A career path built through campaign analysis, market execution, and consulting-focused thinking.</span><span class="lang-inline" data-lang="zh">從市場執行、成效分析到顧問思維逐步累積出的職涯脈絡。</span></p>
-              </div>
-            </div>
-            <div class="career-timeline">
-              <article class="career-item">
-                <div class="career-meta"><div class="career-year"><span class="lang-inline" data-lang="en">Present</span><span class="lang-inline" data-lang="zh">目前</span></div><div class="career-company">Independent / Consultant</div></div>
-                <div class="career-dot"></div>
-                <div class="career-content">
-                  <h3>Ads &amp; Growth Consultant</h3>
-                  <p class="career-subtitle"><span class="lang-inline" data-lang="en">Helping brands read performance more clearly and act with stronger growth logic.</span><span class="lang-inline" data-lang="zh">協助品牌更清楚地判讀成效，並做出更有邏輯的成長決策。</span></p>
-                  <p><span class="lang-inline" data-lang="en">Focused on performance interpretation, strategic planning, and growth recommendations by connecting RTB, attribution, incrementality, ROAS, and budget allocation.</span><span class="lang-inline" data-lang="zh">聚焦於廣告成效判讀、策略規劃與成長決策支持，將 RTB、attribution、incrementality、ROAS 與 budget allocation 整合成更完整的顧問視角。</span></p>
-                </div>
-              </article>
-              <article class="career-item">
-                <div class="career-meta"><div class="career-year"><span class="lang-inline" data-lang="en">Previous</span><span class="lang-inline" data-lang="zh">前一階段</span></div><div class="career-company">Appier</div></div>
-                <div class="career-dot"></div>
-                <div class="career-content">
-                  <h3>Campaign Analyst</h3>
-                  <p class="career-subtitle"><span class="lang-inline" data-lang="en">Cross-market campaign strategy and performance optimization across APAC and EU.</span><span class="lang-inline" data-lang="zh">負責 APAC 與 EU 的跨市場投放策略與成效優化。</span></p>
-                  <p><span class="lang-inline" data-lang="en">Worked on campaign strategy, performance optimization, and media analysis for global ecommerce, gaming, and lifestyle-service brands.</span><span class="lang-inline" data-lang="zh">曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，累積全球電商、遊戲與生活服務品牌的實戰經驗。</span></p>
-                </div>
-              </article>
-              <article class="career-item">
-                <div class="career-meta"><div class="career-year"><span class="lang-inline" data-lang="en">Earlier</span><span class="lang-inline" data-lang="zh">更早之前</span></div><div class="career-company">International Retail Ecommerce</div></div>
-                <div class="career-dot"></div>
-                <div class="career-content">
-                  <h3>Retail Ecommerce Operator</h3>
-                  <p class="career-subtitle"><span class="lang-inline" data-lang="en">Built a practical foundation in ecommerce operations and commercial execution.</span><span class="lang-inline" data-lang="zh">在電商營運與商業執行中建立實務基礎。</span></p>
-                  <p><span class="lang-inline" data-lang="en">Developed a practical understanding of market rhythm, conversion thinking, and execution discipline before moving into performance-focused work.</span><span class="lang-inline" data-lang="zh">在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續進入數位廣告與成效優化工作的基礎。</span></p>
-                </div>
-              </article>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <div class="container">
-          <div class="contact-wrap reveal">
-            <div>
-              <span class="eyebrow"><span class="lang-inline" data-lang="en">Contact</span><span class="lang-inline" data-lang="zh">聯絡我</span></span>
-              <h2><span class="lang-inline" data-lang="en">Let's make your ad performance easier to read.</span><span class="lang-inline" data-lang="zh">讓廣告成效更清楚，讓成長決策更有依據。</span></h2>
-              <p class="muted" style="margin-top:12px; max-width:52ch;"><span class="lang-inline" data-lang="en">Reach out on LinkedIn or use the consultation form to start a conversation.</span><span class="lang-inline" data-lang="zh">你可以從 LinkedIn 聯絡我，或透過諮詢表單開始合作洽談。</span></p>
-              <div class="form-feedback" id="contact-feedback" role="status" aria-live="polite">
-                <span class="lang-inline" data-lang="en">Button clicked. You can continue to LinkedIn or open the consultation form.</span>
-                <span class="lang-inline" data-lang="zh">已點擊按鈕，你可以繼續前往 LinkedIn 或打開諮詢表單。</span>
-              </div>
-            </div>
-            <div class="contact-actions">
-              <a class="button button-primary js-feedback-trigger" href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer"><span class="lang-inline" data-lang="en">Consultation Form</span><span class="lang-inline" data-lang="zh">諮詢表單填寫</span></a>
-              <a class="button button-secondary js-feedback-trigger" href="https://www.linkedin.com/in/christineteng01" target="_blank" rel="noreferrer"><span class="lang-inline" data-lang="en">Contact on LinkedIn</span><span class="lang-inline" data-lang="zh">LinkedIn 聯絡我</span></a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div>
-          <span class="lang-inline" data-lang="en">Christine Teng | Ads &amp; Growth Consultant</span>
-          <span class="lang-inline" data-lang="zh">Christine Teng｜廣告成效分析與成長顧問</span>
-        </div>
-        <div>
-          <span class="lang-inline" data-lang="en">LinkedIn | Consultation Form | APAC × EU Performance Marketing</span>
-          <span class="lang-inline" data-lang="zh">LinkedIn｜諮詢表單｜APAC × EU 跨市場成效行銷</span>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow"><span class="lang-en">Services</span><span class="lang-zh">服務</span></span>
+            <h2><span class="lang-en">Support that moves from execution to strategic diagnosis.</span><span class="lang-zh">從投放執行到策略診斷的整合支援。</span></h2>
+          </div>
+          <p class="muted" style="max-width: 48ch;"><span class="lang-en">My current focus is on campaign execution support and performance consulting for brands that want clearer decisions.</span><span class="lang-zh">目前聚焦於廣告投手支援與成效分析顧問服務，協助品牌做出更清楚的投放與成長決策。</span></p>
+        </div>
+        <div class="services-grid">
+          <article class="card reveal">
+            <span class="chip"><span class="lang-en">Ads Operation Support</span><span class="lang-zh">廣告投手支援</span></span>
+            <h3><span class="lang-en">Campaign execution with disciplined optimization.</span><span class="lang-zh">有節奏、有紀律的廣告執行與優化。</span></h3>
+            <p class="muted"><span class="lang-en">Handle campaign execution, daily optimization, and ongoing monitoring to keep accounts stable.</span><span class="lang-zh">執行廣告投放、日常優化與數據監控，讓帳戶表現更穩定。</span></p>
+          </article>
+          <article class="card reveal">
+            <span class="chip"><span class="lang-en">Performance Marketing Consultant</span><span class="lang-zh">廣告成效分析顧問</span></span>
+            <h3><span class="lang-en">Diagnostic thinking for better budget and growth decisions.</span><span class="lang-zh">用診斷式思考支持更好的預算與成長決策。</span></h3>
+            <p class="muted"><span class="lang-en">Translate data, diagnose performance, and recommend stronger next steps for growth.</span><span class="lang-zh">從數據解讀、投放診斷到成長建議，協助品牌找到真正有效的策略。</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow"><span class="lang-en">Experience</span><span class="lang-zh">經驗</span></span>
+            <h2><span class="lang-en">Experience shaped by performance optimization and growth strategy.</span><span class="lang-zh">以成效優化與成長策略為核心的實戰經驗。</span></h2>
+          </div>
+          <p class="muted" style="max-width: 48ch;"><span class="lang-en">These examples are anonymized to keep client details private while preserving strategic outcomes.</span><span class="lang-zh">以下以匿名方式呈現實戰經驗，在保留專業成果的同時避免揭露客戶名稱。</span></p>
+        </div>
+        <div class="experience-grid">
+          <article class="experience-panel reveal">
+            <span class="chip"><span class="lang-en">Selected Experience</span><span class="lang-zh">精選經驗</span></span>
+            <div class="experience-list">
+              <div class="experience-item"><span class="lang-en">Served global ecommerce, gaming, and lifestyle-service brands with a focus on optimization and growth strategy.</span><span class="lang-zh">曾服務全球電商、遊戲與生活服務品牌，專注於成效優化與成長策略。</span></div>
+              <div class="experience-item"><span class="lang-en">Led a major European food-delivery account and lifted monthly revenue growth to 2.3x with incremental uplift above 40%.</span><span class="lang-zh">曾操盤歐洲大型 food delivery 客戶，提升月營收增長 2.3x，incremental uplift &gt;40%。</span></div>
+              <div class="experience-item"><span class="lang-en">Maintained re-engagement ROAS above 130% for a large U.S. casual gaming client.</span><span class="lang-zh">為美國大型休閒遊戲客戶，維持舊用戶喚醒 ROAS &gt;130%。</span></div>
+              <div class="experience-item"><span class="lang-en">Delivered ROAS above 100% and over 100 daily new users for a well-known Asian gaming brand.</span><span class="lang-zh">為亞洲知名遊戲商達成 ROAS &gt;100% 且每日 &gt;100 位 new user acquisition。</span></div>
+            </div>
+          </article>
+          <div class="experience-stats">
+            <article class="experience-stat reveal"><strong>2.3x Monthly Revenue Growth</strong><p class="muted"><span class="lang-en">Revenue scale-up delivered for a major European food-delivery account.</span><span class="lang-zh">歐洲大型 food delivery 客戶月營收增長 2.3x。</span></p></article>
+            <article class="experience-stat reveal"><strong>&gt;40% Incremental Uplift</strong><p class="muted"><span class="lang-en">Measured success through incrementality, not only surface-level ROAS.</span><span class="lang-zh">以增量視角衡量投放成效，而不只停留在表面 ROAS。</span></p></article>
+            <article class="experience-stat reveal"><strong>&gt;130% Re-engagement ROAS</strong><p class="muted"><span class="lang-en">Strong re-engagement efficiency maintained for a U.S. gaming client.</span><span class="lang-zh">美國大型休閒遊戲客戶舊用戶喚醒效益維持強勢表現。</span></p></article>
+            <article class="experience-stat reveal"><strong>&gt;100 Daily New Users</strong><p class="muted"><span class="lang-en">Consistent daily acquisition volume delivered for a major Asian gaming brand.</span><span class="lang-zh">亞洲知名遊戲商每日新客獲取穩定放量。</span></p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="insights">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow"><span class="lang-en">Insights</span><span class="lang-zh">專欄</span></span>
+            <h2><span class="lang-en">Thoughts on ads, growth, and market trends.</span><span class="lang-zh">關於廣告、成長與市場趨勢的觀察。</span></h2>
+          </div>
+          <p class="muted" style="max-width: 48ch;"><span class="lang-en">This section is being prepared and will expand over time by category.</span><span class="lang-zh">專欄內容正在籌備中，未來會依照分類持續擴充。</span></p>
+        </div>
+        <div class="insights-grid">
+          <div>
+            <article class="insight-category reveal">
+              <span class="chip"><span class="lang-en">Ad Analysis</span><span class="lang-zh">廣告分析</span></span>
+              <p><span class="lang-en">Campaign logic, performance reading, attribution, and optimization strategy.</span><span class="lang-zh">拆解投放邏輯、成效判讀、歸因分析與優化策略。</span></p>
+            </article>
+            <article class="insight-category reveal" style="margin-top: 14px;">
+              <span class="chip"><span class="lang-en">Market Updates</span><span class="lang-zh">市場動態</span></span>
+              <p><span class="lang-en">Digital marketing, ecommerce trends, and market observations from Taiwan and abroad.</span><span class="lang-zh">數位行銷、電商趨勢與國內外市場觀察。</span></p>
+            </article>
+          </div>
+          <article class="insights-placeholder reveal">
+            <span class="chip"><span class="lang-en">Coming Soon</span><span class="lang-zh">正在籌備中</span></span>
+            <strong><span class="lang-en">The first articles will appear here once the structure is ready.</span><span class="lang-zh">專欄內容整理中，未來文章會從這裡持續上線。</span></strong>
+            <p class="muted"><span class="lang-en">Planned structure: /insights/post-slug</span><span class="lang-zh">規劃結構：/insights/post-slug</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <article class="career-arc reveal">
+          <div class="career-arc-head">
+            <span class="eyebrow"><span class="lang-en">Career Arc</span><span class="lang-zh">經歷軌跡</span></span>
+            <div class="career-arc-hero">
+              <strong><span class="lang-en">3+ years across APAC and EU.</span><span class="lang-zh">3+ 年 APAC × EU 跨市場經驗。</span></strong>
+              <p class="muted"><span class="lang-en">A career path built through campaign analysis, market execution, and consulting-focused thinking.</span><span class="lang-zh">從市場執行、成效分析到顧問思維逐步累積出的職涯脈絡。</span></p>
+            </div>
+          </div>
+          <div class="career-timeline">
+            <article class="career-item">
+              <div class="career-meta"><div class="career-year"><span class="lang-en">Present</span><span class="lang-zh">目前</span></div><div class="career-company">Independent / Consultant</div></div>
+              <div class="career-dot"></div>
+              <div class="career-content">
+                <h3>Ads &amp; Growth Consultant</h3>
+                <p class="career-subtitle"><span class="lang-en">Helping brands read performance more clearly and act with stronger growth logic.</span><span class="lang-zh">協助品牌更清楚地判讀成效，並做出更有邏輯的成長決策。</span></p>
+                <p><span class="lang-en">Focused on performance interpretation, strategic planning, and growth recommendations by connecting RTB, attribution, incrementality, ROAS, and budget allocation.</span><span class="lang-zh">聚焦於廣告成效判讀、策略規劃與成長決策支持，將 RTB、attribution、incrementality、ROAS 與 budget allocation 整合成更完整的顧問視角。</span></p>
+              </div>
+            </article>
+            <article class="career-item">
+              <div class="career-meta"><div class="career-year"><span class="lang-en">Previous</span><span class="lang-zh">前一階段</span></div><div class="career-company">Appier</div></div>
+              <div class="career-dot"></div>
+              <div class="career-content">
+                <h3>Campaign Analyst</h3>
+                <p class="career-subtitle"><span class="lang-en">Cross-market campaign strategy and performance optimization across APAC and EU.</span><span class="lang-zh">負責 APAC 與 EU 的跨市場投放策略與成效優化。</span></p>
+                <p><span class="lang-en">Worked on campaign strategy, performance optimization, and media analysis for global ecommerce, gaming, and lifestyle-service brands.</span><span class="lang-zh">曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，累積全球電商、遊戲與生活服務品牌的實戰經驗。</span></p>
+              </div>
+            </article>
+            <article class="career-item">
+              <div class="career-meta"><div class="career-year"><span class="lang-en">Earlier</span><span class="lang-zh">更早之前</span></div><div class="career-company">International Retail Ecommerce</div></div>
+              <div class="career-dot"></div>
+              <div class="career-content">
+                <h3>Retail Ecommerce Operator</h3>
+                <p class="career-subtitle"><span class="lang-en">Built a practical foundation in ecommerce operations and commercial execution.</span><span class="lang-zh">在電商營運與商業執行中建立實務基礎。</span></p>
+                <p><span class="lang-en">Developed a practical understanding of market rhythm, conversion thinking, and execution discipline before moving into performance-focused work.</span><span class="lang-zh">在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續進入數位廣告與成效優化工作的基礎。</span></p>
+              </div>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-wrap reveal">
+          <div>
+            <span class="eyebrow"><span class="lang-en">Contact</span><span class="lang-zh">聯絡我</span></span>
+            <h2><span class="lang-en">Let's make your ad performance easier to read.</span><span class="lang-zh">讓廣告成效更清楚，讓成長決策更有依據。</span></h2>
+            <p class="muted" style="margin-top: 12px; max-width: 52ch;"><span class="lang-en">Reach out on LinkedIn or use the consultation form to start a conversation.</span><span class="lang-zh">你可以從 LinkedIn 聯絡我，或透過諮詢表單開始合作洽談。</span></p>
+            <div class="form-feedback" id="contact-feedback" role="status" aria-live="polite">
+              <span class="lang-en">Button clicked. You can continue to LinkedIn or open the consultation form.</span>
+              <span class="lang-zh">已點擊按鈕，你可以繼續前往 LinkedIn 或打開諮詢表單。</span>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a class="button button-primary js-feedback-trigger" href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer"><span class="lang-en">Consultation Form</span><span class="lang-zh">諮詢表單填寫</span></a>
+            <a class="button button-secondary js-feedback-trigger" href="https://www.linkedin.com/in/christineteng01" target="_blank" rel="noreferrer"><span class="lang-en">Contact on LinkedIn</span><span class="lang-zh">LinkedIn 聯絡我</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><span class="lang-en">Christine Teng | Ads &amp; Growth Consultant</span><span class="lang-zh">Christine Teng｜廣告成效分析與成長顧問</span></div>
+      <div><span class="lang-en">LinkedIn | Consultation Form | APAC × EU Performance Marketing</span><span class="lang-zh">LinkedIn｜諮詢表單｜APAC × EU 跨市場成效行銷</span></div>
+    </div>
+  </footer>
+
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     const feedback = document.getElementById('contact-feedback');
-    const langButtons = document.querySelectorAll('[data-set-lang]');
+    const languageButtons = document.querySelectorAll('[data-set-language]');
 
-    const applyLanguage = (lang) => {
-      document.body.dataset.lang = lang;
-      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
-      localStorage.setItem('site-language', lang);
-      langButtons.forEach((button) => {
-        button.classList.toggle('is-active', button.dataset.setLang === lang);
+    const setLanguage = (language) => {
+      document.body.dataset.language = language;
+      document.documentElement.lang = language === 'en' ? 'en' : 'zh-Hant';
+      try {
+        localStorage.setItem('site-language', language);
+      } catch (error) {
+        // Ignore storage errors and keep the page functional.
+      }
+      languageButtons.forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.setLanguage === language);
       });
     };
 
-    const savedLanguage = localStorage.getItem('site-language');
-    applyLanguage(savedLanguage === 'en' ? 'en' : 'zh');
+    let initialLanguage = 'zh';
+    try {
+      const saved = localStorage.getItem('site-language');
+      if (saved === 'en' || saved === 'zh') initialLanguage = saved;
+    } catch (error) {
+      initialLanguage = 'zh';
+    }
+    setLanguage(initialLanguage);
 
-    langButtons.forEach((button) => {
-      button.addEventListener('click', () => applyLanguage(button.dataset.setLang));
+    languageButtons.forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.setLanguage));
     });
 
     if (navToggle && navLinks) {
@@ -493,6 +906,7 @@
 
     const revealElements = document.querySelectorAll('.reveal');
     const numberElements = document.querySelectorAll('[data-count]');
+
     const animateNumber = (element) => {
       if (element.dataset.animated === 'true') return;
       element.dataset.animated = 'true';
