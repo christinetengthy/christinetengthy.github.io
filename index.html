@@ -365,7 +365,8 @@
     .floating-card strong,
     .metric-number,
     .proof-stat strong,
-    .card-index {
+    .card-index,
+    .career-arc-hero strong {
       font-family: "Times New Roman", Times, serif;
     }
 
@@ -401,7 +402,8 @@
     }
 
     .card,
-    .metric-card {
+    .metric-card,
+    .career-arc {
       background: var(--panel);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(60, 60, 60, 0.08);
@@ -600,26 +602,123 @@
       margin-bottom: 12px;
     }
 
-    .about-card {
-      padding: 34px;
+    .career-arc {
+      padding: 36px;
       border-radius: 28px;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 241, 241, 0.98));
-      border: 1px solid rgba(60, 60, 60, 0.08);
-      box-shadow: var(--shadow);
     }
 
-    .about-highlights {
+    .career-arc-head {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 24px;
+      gap: 10px;
+      margin-bottom: 28px;
     }
 
-    .about-highlights div {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(60, 60, 60, 0.06);
+    .career-arc-hero {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(60, 60, 60, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .career-arc-hero strong {
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1.04;
+    }
+
+    .career-timeline {
+      position: relative;
+      display: grid;
+      gap: 30px;
+    }
+
+    .career-timeline::before {
+      content: "";
+      position: absolute;
+      left: 176px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: rgba(77, 77, 77, 0.18);
+    }
+
+    .career-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 150px 24px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .career-meta {
+      text-align: right;
+      padding-top: 4px;
+    }
+
+    .career-year {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-strong);
+    }
+
+    .career-company {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .career-dot {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      margin-top: 2px;
+      z-index: 1;
+    }
+
+    .career-dot::before {
+      content: "";
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.95);
+    }
+
+    .career-content {
+      padding: 0 0 2px;
+    }
+
+    .career-content h3 {
+      font-size: 1.8rem;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .career-subtitle {
+      font-style: italic;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .career-tag {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(77, 77, 77, 0.06);
+      border: 1px solid rgba(60, 60, 60, 0.08);
+      color: var(--accent-strong);
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
     .contact-wrap {
@@ -720,9 +819,31 @@
       .metrics-grid,
       .expertise-grid,
       .services-grid,
-      .approach-strip,
-      .about-highlights {
+      .approach-strip {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .career-timeline::before {
+        left: 10px;
+      }
+
+      .career-item {
+        grid-template-columns: 24px minmax(0, 1fr);
+      }
+
+      .career-meta {
+        grid-column: 2;
+        text-align: left;
+        margin-bottom: 8px;
+        padding-top: 0;
+      }
+
+      .career-dot {
+        grid-row: 1 / span 2;
+      }
+
+      .career-content {
+        grid-column: 2;
       }
 
       .section {
@@ -782,14 +903,21 @@
       .metrics-grid,
       .expertise-grid,
       .services-grid,
-      .approach-strip,
-      .about-highlights {
+      .approach-strip {
         grid-template-columns: 1fr;
       }
 
       .section-heading {
         flex-direction: column;
         align-items: start;
+      }
+
+      .career-arc {
+        padding: 24px;
+      }
+
+      .career-content h3 {
+        font-size: 1.45rem;
       }
 
       .contact-wrap {
@@ -1104,31 +1232,78 @@
 
       <section class="section" id="about">
         <div class="container">
-          <article class="about-card reveal">
-            <span class="eyebrow">About 關於我</span>
-            <h2>Ads &amp; Growth Consultant | Ex-Appier Campaign Analyst</h2>
-            <p class="muted" style="font-size: 1.05rem; margin-top: 10px;">
-              廣告成效顧問｜前 Appier Campaign Analyst
-            </p>
-            <p style="margin-top: 18px; max-width: 60ch;">
-              3+ years of cross-market experience across APAC and EU, with hands-on work spanning ad strategy, campaign optimization, and performance diagnosis.
-            </p>
-            <p class="muted" style="margin-top: 12px; max-width: 60ch;">
-              擁有 3+ 年跨市場（APAC × EU）廣告策略與成效優化經驗。曾任 Appier Campaign Analyst，也具國際零售電商營運背景，熟悉從投放到成長決策的完整鏈路。
-            </p>
-            <div class="about-highlights">
-              <div>
-                <h3>APAC × EU</h3>
-                <p class="muted">跨市場策略與優化經驗</p>
+          <article class="career-arc reveal">
+            <div class="career-arc-head">
+              <span class="eyebrow">Career Arc 經歷軌跡</span>
+              <div class="career-arc-hero">
+                <strong>3+ years. Across APAC and EU.</strong>
+                <p class="muted">把履歷的過往改成時間軸呈現，讓職涯脈絡比傳統自我介紹更清楚。</p>
               </div>
-              <div>
-                <h3>Ex-Appier</h3>
-                <p class="muted">Campaign Analyst 背景</p>
-              </div>
-              <div>
-                <h3>Growth-minded</h3>
-                <p class="muted">以成效與決策品質為核心</p>
-              </div>
+            </div>
+
+            <div class="career-timeline">
+              <article class="career-item">
+                <div class="career-meta">
+                  <div class="career-year">Present</div>
+                  <div class="career-company">Independent / Consultant</div>
+                </div>
+                <div class="career-dot"></div>
+                <div class="career-content">
+                  <h3>Ads &amp; Growth Consultant</h3>
+                  <p class="career-subtitle">Helping brands read performance more clearly and act with stronger growth logic.</p>
+                  <p>
+                    聚焦於廣告成效判讀、策略規劃與成長決策支持，將 RTB、attribution、incrementality、ROAS 與 budget allocation 整合成更完整的顧問式視角。
+                  </p>
+                  <div class="career-tags">
+                    <span class="career-tag">RTB</span>
+                    <span class="career-tag">Attribution</span>
+                    <span class="career-tag">Incrementality</span>
+                    <span class="career-tag">Growth Strategy</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="career-item">
+                <div class="career-meta">
+                  <div class="career-year">Previous</div>
+                  <div class="career-company">Appier</div>
+                </div>
+                <div class="career-dot"></div>
+                <div class="career-content">
+                  <h3>Campaign Analyst</h3>
+                  <p class="career-subtitle">Cross-market campaign strategy and performance optimization across APAC and EU.</p>
+                  <p>
+                    曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，實際服務品牌包含 Wolt Delivery、Garena、星城 Online、中華航空與 Notta 等國內外企業。
+                  </p>
+                  <div class="career-tags">
+                    <span class="career-tag">APAC × EU</span>
+                    <span class="career-tag">Performance Marketing</span>
+                    <span class="career-tag">ROAS</span>
+                    <span class="career-tag">Measurement</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="career-item">
+                <div class="career-meta">
+                  <div class="career-year">Earlier</div>
+                  <div class="career-company">International Retail Ecommerce</div>
+                </div>
+                <div class="career-dot"></div>
+                <div class="career-content">
+                  <h3>Retail Ecommerce Operator</h3>
+                  <p class="career-subtitle">Built a practical foundation in ecommerce operations, coordination, and commercial execution.</p>
+                  <p>
+                    在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續進入數位廣告與成效優化工作的基礎。
+                  </p>
+                  <div class="career-tags">
+                    <span class="career-tag">Ecommerce</span>
+                    <span class="career-tag">Operations</span>
+                    <span class="career-tag">Market Coordination</span>
+                    <span class="career-tag">Commercial Thinking</span>
+                  </div>
+                </div>
+              </article>
             </div>
           </article>
         </div>
