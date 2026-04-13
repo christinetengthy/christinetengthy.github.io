@@ -42,6 +42,39 @@
     h2 { font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.1; margin-bottom: 10px; font-weight: 700; }
     h3 { font-size: 1.18rem; line-height: 1.35; font-weight: 700; }
     .muted { color: var(--muted); }
+
+    .lang-switcher-wrap { display:flex; align-items:center; gap:14px; }
+    .lang-switcher {
+      display:inline-flex;
+      padding:4px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,0.96);
+    }
+    .lang-btn {
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      padding:8px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:700;
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-btn.is-active {
+      background:var(--accent);
+      color:#fff;
+    }
+    .lang-en, .lang-zh { display:none; }
+    body.lang-en .lang-en.inline,
+    body.lang-zh .lang-zh.inline { display:inline; }
+    body.lang-en .lang-en.inline-flex,
+    body.lang-zh .lang-zh.inline-flex { display:inline-flex; }
+    body.lang-en .lang-en.block,
+    body.lang-zh .lang-zh.block { display:block; }
+    body.lang-en .lang-en.flex,
+    body.lang-zh .lang-zh.flex { display:flex; }
+
     .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(255,255,255,0.88); border-bottom: 1px solid rgba(60,60,60,0.08); }
     .topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 20px; }
     .brand { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
@@ -56,7 +89,6 @@
     .hero-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:28px; align-items:start; }
     .hero-copy { display:grid; gap:20px; max-width: 760px; }
     .hero-copy .lead { font-size: clamp(1.08rem, 2vw, 1.3rem); color: var(--muted); max-width: 58ch; }
-    .hero-copy .lead-zh { font-size:1.04rem; max-width:54ch; }
     .cta-group,.contact-actions { display:flex; flex-wrap:wrap; gap:14px; }
     .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 20px; border-radius:999px; border:1px solid transparent; font-weight:700; transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition); }
     .button:hover,.button:focus-visible { transform:translateY(-2px); }
@@ -118,6 +150,7 @@
     .reveal { opacity:0; transform:translateY(28px); transition:opacity 700ms ease, transform 700ms ease; }
     .reveal.is-visible { opacity:1; transform:translateY(0); }
     @media (max-width: 980px) {
+      .lang-switcher-wrap { width:100%; justify-content:flex-end; }
       .experience-grid,.insights-grid,.contact-wrap { grid-template-columns:1fr; }
       .metrics-grid,.expertise-grid,.services-grid,.approach-notes { grid-template-columns:1fr 1fr; }
       .career-timeline::before { left:10px; }
@@ -130,7 +163,7 @@
     }
     @media (max-width: 760px) {
       .container { width:min(var(--max-width), calc(100% - 24px)); }
-      .topbar-inner { min-height:72px; }
+      .topbar-inner { min-height:72px; align-items:flex-start; flex-wrap:wrap; padding:12px 0; }
       .nav-toggle { display:inline-flex; }
       .nav-links { position:absolute; left:12px; right:12px; top:calc(100% + 10px); background:rgba(255,255,255,0.98); border:1px solid rgba(60,60,60,0.1); box-shadow:var(--shadow); border-radius:24px; padding:12px; display:none; flex-direction:column; align-items:stretch; }
       .nav-links.is-open { display:flex; }
@@ -149,22 +182,34 @@
     }
   </style>
 </head>
-<body>
+<body class="lang-zh">
   <div class="page-shell">
     <header class="topbar">
       <div class="container topbar-inner">
         <a class="brand" href="#home" aria-label="Christine Teng home">
           <strong>Christine Teng</strong>
-          <span>Ads &amp; Growth Consultant</span>
+          <span>
+            <span class="lang-en inline">Ads &amp; Growth Consultant</span>
+            <span class="lang-zh inline">廣告成效分析與成長顧問</span>
+          </span>
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <div class="lang-switcher-wrap">
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-btn" type="button" data-language="en">EN</button>
+            <button class="lang-btn is-active" type="button" data-language="zh">中文</button>
+          </div>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+            <span class="lang-en inline">Menu</span>
+            <span class="lang-zh inline">選單</span>
+          </button>
+        </div>
         <nav class="nav-links" id="site-nav" aria-label="Primary">
-          <a href="#expertise">Expertise 專長</a>
-          <a href="#services">Services 服務</a>
-          <a href="#experience">Experience 經驗</a>
-          <a href="#insights">Insights 專欄</a>
-          <a href="#about">About 關於我</a>
-          <a href="#contact" class="nav-cta">Contact 聯絡</a>
+          <a href="#expertise"><span class="lang-en inline">Expertise</span><span class="lang-zh inline">專長</span></a>
+          <a href="#services"><span class="lang-en inline">Services</span><span class="lang-zh inline">服務</span></a>
+          <a href="#experience"><span class="lang-en inline">Experience</span><span class="lang-zh inline">經驗</span></a>
+          <a href="#insights"><span class="lang-en inline">Insights</span><span class="lang-zh inline">專欄</span></a>
+          <a href="#about"><span class="lang-en inline">About</span><span class="lang-zh inline">關於我</span></a>
+          <a href="#contact" class="nav-cta"><span class="lang-en inline">Contact</span><span class="lang-zh inline">聯絡</span></a>
         </nav>
       </div>
     </header>
@@ -172,45 +217,95 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy reveal">
-            <span class="eyebrow">Ads &amp; Growth Consultant</span>
+            <span class="eyebrow">
+              <span class="lang-en inline">Ads &amp; Growth Consultant</span>
+              <span class="lang-zh inline">廣告成效分析與成長顧問</span>
+            </span>
             <div>
-              <p class="muted" style="font-size:1.05rem; margin-bottom:12px;">廣告成效分析與成長顧問</p>
-              <h1>Turning ad performance into decisions you can trust.</h1>
+              <h1>
+                <span class="lang-en inline">Turning ad performance into decisions you can trust.</span>
+                <span class="lang-zh inline">看懂廣告成效，做出更好的成長決策。</span>
+              </h1>
             </div>
-            <p class="lead">From RTB to attribution and incrementality, I help brands read the real story behind their media performance.</p>
-            <p class="lead lead-zh muted">看懂廣告成效，不只是投放，而是做出更好的成長決策。從數據分析到策略規劃，協助品牌找到真正有效的成長方向。</p>
+            <p class="lead">
+              <span class="lang-en inline">From RTB to attribution and incrementality, I help brands read the real story behind their media performance.</span>
+              <span class="lang-zh inline">從 RTB、attribution 到 incrementality，我協助品牌看懂媒體成效背後真正的商業意義。</span>
+            </p>
+            <p class="lead muted">
+              <span class="lang-en inline">I focus on performance analysis, strategic planning, and growth recommendations that are clear enough to guide action.</span>
+              <span class="lang-zh inline">我專注於成效分析、策略規劃與成長建議，讓數據可以真正支持後續行動。</span>
+            </p>
             <div class="cta-group">
-              <a class="button button-primary" href="#contact">Work With Me 開始合作</a>
-              <a class="button button-secondary" href="#expertise">View Expertise 查看專長</a>
+              <a class="button button-primary" href="#contact"><span class="lang-en inline">Book a Consultation</span><span class="lang-zh inline">預約諮詢</span></a>
+              <a class="button button-secondary" href="#expertise"><span class="lang-en inline">View Expertise</span><span class="lang-zh inline">查看專長</span></a>
             </div>
             <div class="approach-notes">
-              <div class="approach-note"><strong>Signal Diagnosis</strong><p>釐清數據訊號與真正的問題來源。</p></div>
-              <div class="approach-note"><strong>Performance Interpretation</strong><p>把媒體數據轉成可執行的商業洞察。</p></div>
-              <div class="approach-note"><strong>Strategic Recommendation</strong><p>提出可放大成效的投放與成長策略。</p></div>
+              <div class="approach-note">
+                <strong><span class="lang-en inline">Signal Diagnosis</span><span class="lang-zh inline">訊號診斷</span></strong>
+                <p><span class="lang-en inline">Clarify which signals matter and where the real performance issue begins.</span><span class="lang-zh inline">釐清哪些數據訊號最重要，以及問題真正從哪裡開始。</span></p>
+              </div>
+              <div class="approach-note">
+                <strong><span class="lang-en inline">Performance Interpretation</span><span class="lang-zh inline">成效解讀</span></strong>
+                <p><span class="lang-en inline">Translate media data into business insight that teams can actually use.</span><span class="lang-zh inline">把媒體數據轉成團隊能採取行動的商業洞察。</span></p>
+              </div>
+              <div class="approach-note">
+                <strong><span class="lang-en inline">Strategic Recommendation</span><span class="lang-zh inline">策略建議</span></strong>
+                <p><span class="lang-en inline">Recommend practical next steps for performance improvement and growth.</span><span class="lang-zh inline">提出可執行的優化方向與成長建議。</span></p>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <section class="container">
         <div class="metrics-grid">
-          <article class="metric-card reveal"><small>ROAS</small><div class="metric-number" data-count="100" data-prefix="" data-suffix="%+">0</div><p class="muted">穩定達成 100%+ 回報表現</p></article>
-          <article class="metric-card reveal"><small>New users</small><div class="metric-number" data-count="100" data-prefix="+" data-suffix="/day">0</div><p class="muted">新用戶日成長 +100</p></article>
-          <article class="metric-card reveal"><small>Budget scale</small><div class="metric-number" data-count="7" data-prefix="" data-suffix="-digit">0</div><p class="muted">每月負責百萬級以上投放預算管理</p></article>
-          <article class="metric-card reveal"><small>Market experience</small><div class="metric-number" data-count="3" data-prefix="" data-suffix="+ years">0</div><p class="muted">APAC × EU 跨市場經驗</p></article>
+          <article class="metric-card reveal"><small><span class="lang-en inline">ROAS</span><span class="lang-zh inline">ROAS</span></small><div class="metric-number" data-count="100" data-prefix="" data-suffix="%+">0</div><p class="muted"><span class="lang-en inline">Consistently maintained 100%+ return performance.</span><span class="lang-zh inline">穩定達成 100%+ 回報表現。</span></p></article>
+          <article class="metric-card reveal"><small><span class="lang-en inline">New Users</span><span class="lang-zh inline">新用戶</span></small><div class="metric-number" data-count="100" data-prefix="+" data-suffix="/day">0</div><p class="muted"><span class="lang-en inline">Drove steady daily new-user acquisition.</span><span class="lang-zh inline">穩定帶動每日新用戶成長。</span></p></article>
+          <article class="metric-card reveal"><small><span class="lang-en inline">Budget Scale</span><span class="lang-zh inline">預算規模</span></small><div class="metric-number" data-count="7" data-prefix="" data-suffix="-digit">0</div><p class="muted"><span class="lang-en inline">Managed seven-digit monthly media budgets.</span><span class="lang-zh inline">每月負責百萬級以上投放預算管理。</span></p></article>
+          <article class="metric-card reveal"><small><span class="lang-en inline">Market Scope</span><span class="lang-zh inline">市場範圍</span></small><div class="metric-number" data-count="3" data-prefix="" data-suffix="+ years">0</div><p class="muted"><span class="lang-en inline">Cross-market experience across APAC and EU.</span><span class="lang-zh inline">具備 APAC × EU 跨市場經驗。</span></p></article>
         </div>
       </section>
-      <section class="section" id="expertise"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">Expertise 專長</span><h2>Structured thinking for performance, measurement, and growth.</h2></div><p class="muted" style="max-width:46ch;">將廣告數據分析、策略規劃、成效優化與成長策略拆成清楚的方法框架，讓專長可以被看見、被理解，也能被信任。</p></div><div class="expertise-grid"><article class="card reveal"><div class="card-topline"><span class="chip">Ad Data Analytics 廣告數據分析</span><span class="card-index">01</span></div><h3>RTB / MMP / Attribution</h3><p class="muted">拆解數據訊號，理解廣告成效背後的真正原因。</p><p>Read performance beyond dashboards and identify what truly moves conversion efficiency.</p></article><article class="card reveal"><div class="card-topline"><span class="chip">Strategy Planning 廣告策略規劃</span><span class="card-index">02</span></div><h3>User Acquisition / Retention</h3><p class="muted">從新客取得到留存節奏，建立更穩定的成長策略。</p><p>Translate campaign goals into acquisition and retention plans that stay aligned with business priorities.</p></article><article class="card reveal"><div class="card-topline"><span class="chip">Performance Optimization 成效優化</span><span class="card-index">03</span></div><h3>ROAS / LTV / Incrementality</h3><p class="muted">不只看表面數字，而是判讀哪些投放真正帶來有效增長。</p><p>Evaluate efficiency with a broader lens so budget decisions reflect real contribution, not vanity metrics.</p></article><article class="card reveal"><div class="card-topline"><span class="chip">Scaling Strategy 預算配置與成長策略</span><span class="card-index">04</span></div><h3>Budget Allocation / Growth Planning</h3><p class="muted">協助品牌在有限預算中找到更有效率的放大方式。</p><p>Shape scalable budget plans that balance experimentation, growth pressure, and return visibility.</p></article></div></div></section>
-      <section class="section" id="services"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">Services 服務</span><h2>Support that moves from execution to strategic diagnosis.</h2></div><p class="muted" style="max-width:48ch;">目前聚焦從廣告投手與廣告成效分析顧問切入，提供品牌既能落地執行、也能提升判斷品質的合作方式。</p></div><div class="services-grid"><article class="card reveal"><span class="chip">Ads Operation Support 廣告投手支援</span><h3>Campaign execution with disciplined optimization.</h3><p class="muted">執行廣告投放、日常優化與數據監控，讓帳戶表現更穩定。</p><ul class="service-list"><li>Media buying and ongoing optimization</li><li>Daily monitoring and performance readouts</li><li>Execution support for growth-focused teams</li></ul></article><article class="card reveal"><span class="chip">Performance Marketing Consultant 廣告成效分析顧問</span><h3>Diagnostic thinking for better budget and growth decisions.</h3><p class="muted">從數據解讀、投放診斷到成長建議，協助品牌找到真正有效的策略。</p><ul class="service-list"><li>Attribution and incrementality discussion</li><li>ROAS, LTV, and budget allocation review</li><li>Strategy recommendations for scaling</li></ul></article></div></div></section>
-      <section class="section" id="experience"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">Experience 經驗</span><h2>Experience shaped by performance optimization and growth strategy.</h2></div><p class="muted" style="max-width:48ch;">以匿名化方式呈現跨產業投放與優化經驗，保留專業性與成果說服力，同時避免揭露實際客戶名稱。</p></div><div class="experience-grid"><article class="experience-panel reveal"><span class="chip">Selected Experience 精選經驗</span><div class="experience-list"><div class="experience-item">曾服務全球電商、遊戲與生活服務品牌，專注於成效優化與成長策略。</div><div class="experience-item">曾操盤歐洲大型 food delivery 客戶，提升月營收增長 2.3x，incremental uplift &gt;40%。</div><div class="experience-item">為美國大型休閒遊戲客戶，維持舊用戶喚醒 ROAS &gt;130%。</div><div class="experience-item">為亞洲知名遊戲商達成 ROAS &gt;100% 且每日 &gt;100 位 new user acquisition。</div></div></article><div class="experience-stats"><article class="experience-stat reveal"><strong>2.3x Monthly Revenue Growth</strong><p class="muted">歐洲大型 food delivery 客戶月營收增長 2.3x。</p></article><article class="experience-stat reveal"><strong>&gt;40% Incremental Uplift</strong><p class="muted">以增量視角衡量投放成效，而不只停留在表面 ROAS。</p></article><article class="experience-stat reveal"><strong>&gt;130% Re-engagement ROAS</strong><p class="muted">美國大型休閒遊戲客戶舊用戶喚醒效益維持強勢表現。</p></article><article class="experience-stat reveal"><strong>&gt;100 Daily New Users</strong><p class="muted">亞洲知名遊戲商每日新客獲取穩定放量。</p></article></div></div></div></section>
-      <section class="section" id="insights"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow">Insights 專欄</span><h2>Thoughts on ads, growth, and market trends.</h2></div><p class="muted" style="max-width:48ch;">在正式開始更新文章之前，這裡先保留為專欄入口。未來會依照分類持續新增內容，不會再顯示假文章卡片。</p></div><div class="insights-grid"><div class="insight-categories"><article class="insight-category reveal"><span class="chip">Ad Analysis 廣告分析</span><p>拆解投放邏輯、成效判讀、歸因分析與優化策略。</p></article><article class="insight-category reveal"><span class="chip">Market Updates 市場動態</span><p>數位行銷、電商趨勢與國內外市場觀察。</p></article></div><article class="insights-placeholder reveal"><span class="chip">Coming Soon 正在籌備中</span><strong>專欄內容整理中，未來文章會從這裡持續擴充。</strong><p class="muted">Future posts will appear here once the first articles are ready.</p><code>Future structure: /insights/post-slug</code></article></div></div></section>
-      <section class="section" id="about"><div class="container"><article class="career-arc reveal"><div class="career-arc-head"><span class="eyebrow">Career Arc 經歷軌跡</span><div class="career-arc-hero"><strong>3+ years. Across APAC and EU.</strong><p class="muted">把履歷的過往改成時間軸呈現，讓職涯脈絡比傳統自我介紹更清楚。</p></div></div><div class="career-timeline"><article class="career-item"><div class="career-meta"><div class="career-year">Present</div><div class="career-company">Independent / Consultant</div></div><div class="career-dot"></div><div class="career-content"><h3>Ads &amp; Growth Consultant</h3><p class="career-subtitle">Helping brands read performance more clearly and act with stronger growth logic.</p><p>聚焦於廣告成效判讀、策略規劃與成長決策支持，將 RTB、attribution、incrementality、ROAS 與 budget allocation 整合成更完整的顧問式視角。</p><div class="career-tags"><span class="career-tag">RTB</span><span class="career-tag">Attribution</span><span class="career-tag">Incrementality</span><span class="career-tag">Growth Strategy</span></div></div></article><article class="career-item"><div class="career-meta"><div class="career-year">Previous</div><div class="career-company">Appier</div></div><div class="career-dot"></div><div class="career-content"><h3>Campaign Analyst</h3><p class="career-subtitle">Cross-market campaign strategy and performance optimization across APAC and EU.</p><p>曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，累積全球電商、遊戲與生活服務品牌的實戰經驗。</p><div class="career-tags"><span class="career-tag">APAC × EU</span><span class="career-tag">Performance Marketing</span><span class="career-tag">ROAS</span><span class="career-tag">Measurement</span></div></div></article><article class="career-item"><div class="career-meta"><div class="career-year">Earlier</div><div class="career-company">International Retail Ecommerce</div></div><div class="career-dot"></div><div class="career-content"><h3>Retail Ecommerce Operator</h3><p class="career-subtitle">Built a practical foundation in ecommerce operations, coordination, and commercial execution.</p><p>在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續進入數位廣告與成效優化工作的基礎。</p><div class="career-tags"><span class="career-tag">Ecommerce</span><span class="career-tag">Operations</span><span class="career-tag">Market Coordination</span><span class="career-tag">Commercial Thinking</span></div></div></article></div></article></div></section>
-      <section class="section" id="contact"><div class="container"><div class="contact-wrap reveal"><div><span class="eyebrow">Contact 聯絡我</span><h2>Let's make your ad performance easier to read.</h2><p class="muted" style="margin-top:12px; max-width:52ch;">讓廣告成效更清楚、讓成長決策更有依據。你可以從 LinkedIn 聯絡我，或透過表單開始合作洽詢。</p><div class="form-feedback" id="contact-feedback" role="status" aria-live="polite"><span>Success</span><span>CTA clicked. You can now continue to LinkedIn or open the consultation form.</span></div></div><div class="contact-actions"><a class="button button-primary js-feedback-trigger" href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer">諮詢表單填寫</a><a class="button button-secondary js-feedback-trigger" href="https://www.linkedin.com/in/christineteng01" target="_blank" rel="noreferrer">Connect on LinkedIn</a></div></div></div></section>
+      <section class="section" id="expertise"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow"><span class="lang-en inline">Expertise</span><span class="lang-zh inline">專長</span></span><h2><span class="lang-en inline">Structured thinking for performance, measurement, and growth.</span><span class="lang-zh inline">以系統化方法處理成效、衡量與成長議題。</span></h2></div><p class="muted" style="max-width:46ch;"><span class="lang-en inline">I turn ad analytics, planning, optimization, and scaling into a consulting framework teams can trust.</span><span class="lang-zh inline">將廣告數據分析、策略規劃、成效優化與成長策略整理成更清楚的方法框架，讓團隊更容易理解與採用。</span></p></div><div class="expertise-grid"><article class="card reveal"><div class="card-topline"><span class="chip"><span class="lang-en inline">Ad Data Analytics</span><span class="lang-zh inline">廣告數據分析</span></span><span class="card-index">01</span></div><h3>RTB / MMP / Attribution</h3><p class="muted"><span class="lang-en inline">Read beyond dashboards and identify the real driver of performance.</span><span class="lang-zh inline">拆解數據訊號，理解廣告成效背後真正的原因。</span></p></article><article class="card reveal"><div class="card-topline"><span class="chip"><span class="lang-en inline">Strategy Planning</span><span class="lang-zh inline">廣告策略規劃</span></span><span class="card-index">02</span></div><h3>User Acquisition / Retention</h3><p class="muted"><span class="lang-en inline">Build acquisition and retention plans that stay aligned with business priorities.</span><span class="lang-zh inline">從新客取得到用戶留存，建立更穩定的成長策略。</span></p></article><article class="card reveal"><div class="card-topline"><span class="chip"><span class="lang-en inline">Performance Optimization</span><span class="lang-zh inline">成效優化</span></span><span class="card-index">03</span></div><h3>ROAS / LTV / Incrementality</h3><p class="muted"><span class="lang-en inline">Evaluate efficiency with a broader lens instead of relying on surface-level metrics.</span><span class="lang-zh inline">不只看表面數字，而是判讀哪些投放真正帶來有效增長。</span></p></article><article class="card reveal"><div class="card-topline"><span class="chip"><span class="lang-en inline">Scaling Strategy</span><span class="lang-zh inline">預算配置與成長策略</span></span><span class="card-index">04</span></div><h3>Budget Allocation / Growth Planning</h3><p class="muted"><span class="lang-en inline">Shape budget plans that balance experimentation, efficiency, and growth pressure.</span><span class="lang-zh inline">協助品牌在有限預算中找到更有效率的放大方式。</span></p></article></div></div></section>
+      <section class="section" id="services"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow"><span class="lang-en inline">Services</span><span class="lang-zh inline">服務</span></span><h2><span class="lang-en inline">Support that moves from execution to strategic diagnosis.</span><span class="lang-zh inline">從投放執行到策略診斷的整合支援。</span></h2></div><p class="muted" style="max-width:48ch;"><span class="lang-en inline">My current focus is on campaign execution support and performance consulting for brands that want clearer decisions.</span><span class="lang-zh inline">目前聚焦於廣告投手支援與成效分析顧問服務，協助品牌做出更清楚的投放與成長決策。</span></p></div><div class="services-grid"><article class="card reveal"><span class="chip"><span class="lang-en inline">Ads Operation Support</span><span class="lang-zh inline">廣告投手支援</span></span><h3><span class="lang-en inline">Campaign execution with disciplined optimization.</span><span class="lang-zh inline">有節奏、有紀律的廣告執行與優化。</span></h3><p class="muted"><span class="lang-en inline">Handle campaign execution, daily optimization, and ongoing monitoring to keep accounts stable.</span><span class="lang-zh inline">執行廣告投放、日常優化與數據監控，讓帳戶表現更穩定。</span></p></article><article class="card reveal"><span class="chip"><span class="lang-en inline">Performance Marketing Consultant</span><span class="lang-zh inline">廣告成效分析顧問</span></span><h3><span class="lang-en inline">Diagnostic thinking for better budget and growth decisions.</span><span class="lang-zh inline">用診斷式思考支持更好的預算與成長決策。</span></h3><p class="muted"><span class="lang-en inline">Translate data, diagnose performance, and recommend stronger next steps for growth.</span><span class="lang-zh inline">從數據解讀、投放診斷到成長建議，協助品牌找到真正有效的策略。</span></p></article></div></div></section>
+      <section class="section" id="experience"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow"><span class="lang-en inline">Experience</span><span class="lang-zh inline">經驗</span></span><h2><span class="lang-en inline">Experience shaped by performance optimization and growth strategy.</span><span class="lang-zh inline">以成效優化與成長策略為核心的實戰經驗。</span></h2></div><p class="muted" style="max-width:48ch;"><span class="lang-en inline">These examples are anonymized to keep client details private while preserving strategic outcomes.</span><span class="lang-zh inline">以下以匿名方式呈現實戰經驗，在保留專業成果的同時避免揭露客戶名稱。</span></p></div><div class="experience-grid"><article class="experience-panel reveal"><span class="chip"><span class="lang-en inline">Selected Experience</span><span class="lang-zh inline">精選經驗</span></span><div class="experience-list"><div class="experience-item"><span class="lang-en inline">Served global ecommerce, gaming, and lifestyle-service brands with a focus on optimization and growth strategy.</span><span class="lang-zh inline">曾服務全球電商、遊戲與生活服務品牌，專注於成效優化與成長策略。</span></div><div class="experience-item"><span class="lang-en inline">Led a major European food-delivery account and lifted monthly revenue growth to 2.3x with incremental uplift above 40%.</span><span class="lang-zh inline">曾操盤歐洲大型 food delivery 客戶，提升月營收增長 2.3x，incremental uplift &gt;40%。</span></div><div class="experience-item"><span class="lang-en inline">Maintained re-engagement ROAS above 130% for a large U.S. casual gaming client.</span><span class="lang-zh inline">為美國大型休閒遊戲客戶，維持舊用戶喚醒 ROAS &gt;130%。</span></div><div class="experience-item"><span class="lang-en inline">Delivered ROAS above 100% and over 100 daily new users for a well-known Asian gaming brand.</span><span class="lang-zh inline">為亞洲知名遊戲商達成 ROAS &gt;100% 且每日 &gt;100 位 new user acquisition。</span></div></div></article><div class="experience-stats"><article class="experience-stat reveal"><strong>2.3x Monthly Revenue Growth</strong><p class="muted"><span class="lang-en inline">Revenue scale-up delivered for a major European food-delivery account.</span><span class="lang-zh inline">歐洲大型 food delivery 客戶月營收增長 2.3x。</span></p></article><article class="experience-stat reveal"><strong>&gt;40% Incremental Uplift</strong><p class="muted"><span class="lang-en inline">Measured success through incrementality, not only surface-level ROAS.</span><span class="lang-zh inline">以增量視角衡量投放成效，而不只停留在表面 ROAS。</span></p></article><article class="experience-stat reveal"><strong>&gt;130% Re-engagement ROAS</strong><p class="muted"><span class="lang-en inline">Strong re-engagement efficiency maintained for a U.S. gaming client.</span><span class="lang-zh inline">美國大型休閒遊戲客戶舊用戶喚醒效益維持強勢表現。</span></p></article><article class="experience-stat reveal"><strong>&gt;100 Daily New Users</strong><p class="muted"><span class="lang-en inline">Consistent daily acquisition volume delivered for a major Asian gaming brand.</span><span class="lang-zh inline">亞洲知名遊戲商每日新客獲取穩定放量。</span></p></article></div></div></div></section>
+      <section class="section" id="insights"><div class="container"><div class="section-heading reveal"><div><span class="eyebrow"><span class="lang-en inline">Insights</span><span class="lang-zh inline">專欄</span></span><h2><span class="lang-en inline">Thoughts on ads, growth, and market trends.</span><span class="lang-zh inline">關於廣告、成長與市場趨勢的觀察。</span></h2></div><p class="muted" style="max-width:48ch;"><span class="lang-en inline">This section is being prepared and will expand over time by category.</span><span class="lang-zh inline">專欄內容正在籌備中，未來會依照分類持續擴充。</span></p></div><div class="insights-grid"><div class="insight-categories"><article class="insight-category reveal"><span class="chip"><span class="lang-en inline">Ad Analysis</span><span class="lang-zh inline">廣告分析</span></span><p><span class="lang-en inline">Campaign logic, performance reading, attribution, and optimization strategy.</span><span class="lang-zh inline">拆解投放邏輯、成效判讀、歸因分析與優化策略。</span></p></article><article class="insight-category reveal"><span class="chip"><span class="lang-en inline">Market Updates</span><span class="lang-zh inline">市場動態</span></span><p><span class="lang-en inline">Digital marketing, ecommerce trends, and market observations from Taiwan and abroad.</span><span class="lang-zh inline">數位行銷、電商趨勢與國內外市場觀察。</span></p></article></div><article class="insights-placeholder reveal"><span class="chip"><span class="lang-en inline">Coming Soon</span><span class="lang-zh inline">正在籌備中</span></span><strong><span class="lang-en inline">The first articles will appear here once the structure is ready.</span><span class="lang-zh inline">專欄內容整理中，未來文章會從這裡持續上線。</span></strong><p class="muted"><span class="lang-en inline">Planned structure: /insights/post-slug</span><span class="lang-zh inline">規劃結構：/insights/post-slug</span></p></article></div></div></section>
+      <section class="section" id="about"><div class="container"><article class="career-arc reveal"><div class="career-arc-head"><span class="eyebrow"><span class="lang-en inline">Career Arc</span><span class="lang-zh inline">經歷軌跡</span></span><div class="career-arc-hero"><strong><span class="lang-en inline">3+ years across APAC and EU.</span><span class="lang-zh inline">3+ 年 APAC × EU 跨市場經驗。</span></strong><p class="muted"><span class="lang-en inline">A career path built through campaign analysis, market execution, and consulting-focused thinking.</span><span class="lang-zh inline">從市場執行、成效分析到顧問思維逐步累積出的職涯脈絡。</span></p></div></div><div class="career-timeline"><article class="career-item"><div class="career-meta"><div class="career-year"><span class="lang-en inline">Present</span><span class="lang-zh inline">目前</span></div><div class="career-company">Independent / Consultant</div></div><div class="career-dot"></div><div class="career-content"><h3>Ads &amp; Growth Consultant</h3><p class="career-subtitle"><span class="lang-en inline">Helping brands read performance more clearly and act with stronger growth logic.</span><span class="lang-zh inline">協助品牌更清楚地判讀成效，並做出更有邏輯的成長決策。</span></p><p><span class="lang-en inline">Focused on performance interpretation, strategic planning, and growth recommendations by connecting RTB, attribution, incrementality, ROAS, and budget allocation.</span><span class="lang-zh inline">聚焦於廣告成效判讀、策略規劃與成長決策支持，將 RTB、attribution、incrementality、ROAS 與 budget allocation 整合成更完整的顧問視角。</span></p></div></article><article class="career-item"><div class="career-meta"><div class="career-year"><span class="lang-en inline">Previous</span><span class="lang-zh inline">前一階段</span></div><div class="career-company">Appier</div></div><div class="career-dot"></div><div class="career-content"><h3>Campaign Analyst</h3><p class="career-subtitle"><span class="lang-en inline">Cross-market campaign strategy and performance optimization across APAC and EU.</span><span class="lang-zh inline">負責 APAC 與 EU 的跨市場投放策略與成效優化。</span></p><p><span class="lang-en inline">Worked on campaign strategy, performance optimization, and media analysis for global ecommerce, gaming, and lifestyle-service brands.</span><span class="lang-zh inline">曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，累積全球電商、遊戲與生活服務品牌的實戰經驗。</span></p></div></article><article class="career-item"><div class="career-meta"><div class="career-year"><span class="lang-en inline">Earlier</span><span class="lang-zh inline">更早之前</span></div><div class="career-company">International Retail Ecommerce</div></div><div class="career-dot"></div><div class="career-content"><h3>Retail Ecommerce Operator</h3><p class="career-subtitle"><span class="lang-en inline">Built a practical foundation in ecommerce operations and commercial execution.</span><span class="lang-zh inline">在電商營運與商業執行中建立實務基礎。</span></p><p><span class="lang-en inline">Developed a practical understanding of market rhythm, conversion thinking, and execution discipline before moving into performance-focused work.</span><span class="lang-zh inline">在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續進入數位廣告與成效優化工作的基礎。</span></p></div></article></div></article></div></section>
+      <section class="section" id="contact"><div class="container"><div class="contact-wrap reveal"><div><span class="eyebrow"><span class="lang-en inline">Contact</span><span class="lang-zh inline">聯絡我</span></span><h2><span class="lang-en inline">Let's make your ad performance easier to read.</span><span class="lang-zh inline">讓廣告成效更清楚，讓成長決策更有依據。</span></h2><p class="muted" style="margin-top:12px; max-width:52ch;"><span class="lang-en inline">Reach out on LinkedIn or use the consultation form to start a conversation.</span><span class="lang-zh inline">你可以從 LinkedIn 聯絡我，或透過諮詢表單開始合作洽談。</span></p><div class="form-feedback" id="contact-feedback" role="status" aria-live="polite"><span class="lang-en inline">Button clicked. You can continue to LinkedIn or open the consultation form.</span><span class="lang-zh inline">已點擊按鈕，你可以繼續前往 LinkedIn 或打開諮詢表單。</span></div></div><div class="contact-actions"><a class="button button-primary js-feedback-trigger" href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer"><span class="lang-en inline">Consultation Form</span><span class="lang-zh inline">諮詢表單填寫</span></a><a class="button button-secondary js-feedback-trigger" href="https://www.linkedin.com/in/christineteng01" target="_blank" rel="noreferrer"><span class="lang-en inline">Contact on LinkedIn</span><span class="lang-zh inline">LinkedIn 聯絡我</span></a></div></div></div></section>
     </main>
-    <footer class="footer"><div class="container footer-inner"><div>Christine Teng | Ads &amp; Growth Consultant</div><div>LinkedIn | Consultation Form | APAC × EU Performance Marketing</div></div></footer>
+    <footer class="footer"><div class="container footer-inner"><div><span class="lang-en inline">Christine Teng | Ads &amp; Growth Consultant</span><span class="lang-zh inline">Christine Teng｜廣告成效分析與成長顧問</span></div><div><span class="lang-en inline">LinkedIn | Consultation Form | APAC × EU Performance Marketing</span><span class="lang-zh inline">LinkedIn｜諮詢表單｜APAC × EU 跨市場成效行銷</span></div></div></footer>
   </div>
   <script>
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const langButtons = document.querySelectorAll('[data-language]');
+    const feedback = document.getElementById('contact-feedback');
+
+    const setLanguage = (language) => {
+      document.body.classList.remove('lang-en', 'lang-zh');
+      document.body.classList.add(language === 'en' ? 'lang-en' : 'lang-zh');
+      document.documentElement.lang = language === 'en' ? 'en' : 'zh-Hant';
+      langButtons.forEach((button) => {
+        button.classList.toggle('is-active', button.dataset.language === language);
+      });
+      try {
+        localStorage.setItem('site-language', language);
+      } catch (error) {
+        // Keep the page working if storage is unavailable.
+      }
+    };
+
+    let initialLanguage = 'zh';
+    try {
+      const savedLanguage = localStorage.getItem('site-language');
+      if (savedLanguage === 'en' || savedLanguage === 'zh') initialLanguage = savedLanguage;
+    } catch (error) {
+      initialLanguage = 'zh';
+    }
+    setLanguage(initialLanguage);
+
+    langButtons.forEach((button) => {
+      button.addEventListener('click', () => setLanguage(button.dataset.language));
+    });
+
     if (navToggle && navLinks) {
       navToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('is-open');
@@ -223,6 +318,7 @@
         });
       });
     }
+
     const revealElements = document.querySelectorAll('.reveal');
     const numberElements = document.querySelectorAll('[data-count]');
     const animateNumber = (element) => {
@@ -242,6 +338,7 @@
       };
       requestAnimationFrame(step);
     };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -250,9 +347,10 @@
         observer.unobserve(entry.target);
       });
     }, { threshold: 0.2 });
+
     revealElements.forEach((element) => observer.observe(element));
     numberElements.forEach((element) => observer.observe(element));
-    const feedback = document.getElementById('contact-feedback');
+
     document.querySelectorAll('.js-feedback-trigger').forEach((element) => {
       element.addEventListener('click', () => {
         if (!feedback) return;
