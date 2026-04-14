@@ -115,7 +115,7 @@
     .button:hover { transform: translateY(-2px); }
     .button-primary { background: var(--accent); color: #fff; box-shadow: 0 16px 28px rgba(0,0,0,0.12); }
     .button-secondary { background: #fff; border-color: var(--line); }
-    .metrics-grid, .expertise-grid, .services-grid, .insights-grid { display: grid; gap: 18px; }
+    .metrics-grid, .expertise-grid, .services-grid, .insight-stack { display: grid; gap: 18px; }
     .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .expertise-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card, .metric-card, .panel, .insight-block, .career-arc {
@@ -178,8 +178,6 @@
       border-radius: 50%;
       background: var(--accent);
     }
-    .insights-grid { grid-template-columns: .95fr 1.05fr; align-items: start; }
-    .insight-stack { display: grid; gap: 14px; }
     .approach-notes {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -312,7 +310,7 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 980px) {
       .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr 1fr; }
-      .insights-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 24px minmax(0, 1fr); }
       .timeline-left {
         grid-column: 2;
@@ -486,17 +484,9 @@
           </div>
           <p>Focused on performance interpretation, campaign logic, and regional marketing signals with a clearer editorial rhythm.</p>
         </div>
-        <div class="insights-grid">
-          <div class="insight-stack">
-            <article class="insight-block reveal"><span class="chip">Ad Analysis</span><p>Campaign logic, performance reading, attribution thinking, and optimization frameworks.</p><p class="coming-soon">Articles in preparation</p><p class="placeholder">The first pieces are being prepared. Updates coming soon.</p></article>
-            <article class="insight-block reveal"><span class="chip">Market Updates</span><p>Digital marketing, ecommerce trends, and observations from regional and global markets.</p><p class="coming-soon">Articles in preparation</p><p class="placeholder">The first pieces are being prepared. Updates coming soon.</p></article>
-          </div>
-          <article class="insight-block reveal">
-            <span class="chip">Editorial Focus</span>
-            <h3>From campaign execution to market rhythm, building a clear and evidence-based point of view.</h3>
-            <p class="coming-soon">Articles in preparation</p>
-            <p class="placeholder">The first pieces are being prepared. Updates coming soon.</p>
-          </article>
+        <div class="insight-stack">
+          <article class="insight-block reveal"><span class="chip">Ad Analysis</span><p>Campaign logic, performance reading, attribution thinking, and optimization frameworks.</p><p class="coming-soon">Articles in preparation</p><p class="placeholder">The first pieces are being prepared. Updates coming soon.</p></article>
+          <article class="insight-block reveal"><span class="chip">Market Updates</span><p>Digital marketing, ecommerce trends, and observations from regional and global markets.</p><p class="coming-soon">Articles in preparation</p><p class="placeholder">The first pieces are being prepared. Updates coming soon.</p></article>
         </div>
       </div>
     </section>

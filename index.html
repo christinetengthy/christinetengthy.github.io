@@ -115,7 +115,7 @@
     .button:hover { transform: translateY(-2px); }
     .button-primary { background: var(--accent); color: #fff; box-shadow: 0 16px 28px rgba(0,0,0,0.12); }
     .button-secondary { background: #fff; border-color: var(--line); }
-    .metrics-grid, .expertise-grid, .services-grid, .insights-grid { display: grid; gap: 18px; }
+    .metrics-grid, .expertise-grid, .services-grid, .insight-stack { display: grid; gap: 18px; }
     .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .expertise-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card, .metric-card, .panel, .insight-block, .career-arc {
@@ -179,8 +179,6 @@
       border-radius: 50%;
       background: var(--accent);
     }
-    .insights-grid { grid-template-columns: .95fr 1.05fr; align-items: start; }
-    .insight-stack { display: grid; gap: 14px; }
     .approach-notes {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -313,7 +311,7 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 980px) {
       .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr 1fr; }
-      .insights-grid, .contact-wrap { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 24px minmax(0, 1fr); }
       .timeline-left {
         grid-column: 2;
@@ -502,17 +500,9 @@
           </div>
           <p>聚焦成效判讀、投放邏輯與國內外行銷市場資訊，建立更清晰的觀點脈絡。</p>
         </div>
-        <div class="insights-grid">
-          <div class="insight-stack">
-            <article class="insight-block reveal"><span class="chip">Ad Analysis 廣告分析</span><p>拆解投放策略、成效判讀與歸因邏輯，聚焦真正影響成長的關鍵。</p><p class="coming-soon">文章正在籌備中</p><p class="placeholder">首批內容整理中，近期更新。</p></article>
-            <article class="insight-block reveal"><span class="chip">Market Updates 市場動態</span><p>整理數位行銷、電商趨勢與國內外市場變化，追蹤值得注意的趨勢與訊號。</p><p class="coming-soon">文章正在籌備中</p><p class="placeholder">首批內容整理中，近期更新。</p></article>
-          </div>
-          <article class="insight-block reveal">
-            <span class="chip">Editorial Focus 編輯主軸</span>
-            <h3>從廣告投放到市場節奏，持續輸出清楚、有依據的分析觀點。</h3>
-            <p class="coming-soon">文章正在籌備中</p>
-            <p class="placeholder">首批內容整理中，近期更新。</p>
-          </article>
+        <div class="insight-stack">
+          <article class="insight-block reveal"><span class="chip">Ad Analysis 廣告分析</span><p>拆解投放策略、成效判讀與歸因邏輯，聚焦真正影響成長的關鍵。</p><p class="coming-soon">文章正在籌備中</p><p class="placeholder">首批內容整理中，近期更新。</p></article>
+          <article class="insight-block reveal"><span class="chip">Market Updates 市場動態</span><p>整理數位行銷、電商趨勢與國內外市場變化，追蹤值得注意的趨勢與訊號。</p><p class="coming-soon">文章正在籌備中</p><p class="placeholder">首批內容整理中，近期更新。</p></article>
         </div>
       </div>
     </section>
