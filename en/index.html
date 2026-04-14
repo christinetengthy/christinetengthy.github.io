@@ -388,6 +388,14 @@
       padding-top: 24px;
       flex-wrap: wrap;
     }
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-divider { color: rgba(60,60,60,0.35); }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 980px) {
@@ -714,7 +722,13 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>Christine Teng | Ads &amp; Growth Consultant</div>
-      <div>LinkedIn | Consultation Form | APAC × USA × EU Performance Marketing</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/christineteng01" target="_blank" rel="noreferrer">LinkedIn</a>
+        <span class="footer-divider">|</span>
+        <a href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer">Consultation Form</a>
+        <span class="footer-divider">|</span>
+        <a href="#about">APAC × USA × EU Performance Marketing</a>
+      </div>
     </div>
   </footer>
 
