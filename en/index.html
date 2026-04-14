@@ -84,7 +84,7 @@
       font-weight: 700;
     }
     .hero { padding: 56px 0 72px; }
-    .hero-copy { max-width: 820px; display: grid; gap: 20px; }
+    .hero-copy { max-width: 860px; display: grid; gap: 20px; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -99,7 +99,7 @@
     h1 { font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.02em; }
     h2 { font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.12; margin-bottom: 10px; }
     h3 { font-size: 1.22rem; line-height: 1.35; }
-    .lead { font-size: clamp(1.08rem, 2vw, 1.26rem); color: var(--muted); max-width: 50ch; }
+    .lead { font-size: clamp(1.08rem, 2vw, 1.26rem); color: var(--muted); max-width: 58ch; }
     .cta-group, .contact-actions { display: flex; flex-wrap: wrap; gap: 14px; }
     .button {
       display: inline-flex;
@@ -151,7 +151,8 @@
       margin-bottom: 32px;
     }
     .section-heading p { max-width: 46ch; color: var(--muted); }
-    .service-list { margin: 18px 0 0; padding-left: 18px; color: var(--muted); }
+    .problem-panel ul, .service-list { margin: 18px 0 0; padding-left: 18px; color: var(--muted); }
+    .problem-panel li, .service-list li { margin-bottom: 8px; }
     .experience-copy { max-width: 860px; display: grid; gap: 16px; }
     .experience-points { display: grid; gap: 12px; margin-top: 6px; }
     .experience-points p { position: relative; padding-left: 18px; }
@@ -327,11 +328,12 @@
           <span class="eyebrow">Ads &amp; Growth Consultant</span>
           <div>
             <p class="muted" style="font-size:1.05rem; margin-bottom:12px;">Performance marketing, measurement, and growth strategy</p>
-            <h1>Turning ad performance into decisions you can trust.</h1>
+            <h1>Understand Your Ads. Scale What Actually Works.</h1>
           </div>
-          <p class="lead">From RTB to attribution and incrementality, I help brands read the real story behind media performance and make stronger growth decisions.</p>
+          <p class="lead">Most companies run ads. Few truly understand their performance.</p>
+          <p class="lead">I help businesses break down ROAS, attribution, and incrementality so you can scale with confidence, not guesswork.</p>
           <div class="cta-group">
-            <a class="button button-primary" href="#contact">Work With Me</a>
+            <a class="button button-primary" href="#contact">Get a Free Consultation</a>
             <a class="button button-secondary" href="#expertise">View Expertise</a>
           </div>
           <div class="approach-notes">
@@ -340,6 +342,21 @@
             <div class="approach-note"><strong>Strategic Recommendation</strong><p>Recommend budget and growth moves that are built for measurable impact.</p></div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-scale-breaks">
+      <div class="container">
+        <article class="panel reveal problem-panel">
+          <span class="eyebrow">Core Problem</span>
+          <h2>Why Most Ads Don't Scale</h2>
+          <ul>
+            <li>ROAS looks good, but growth is unstable</li>
+            <li>Attribution is unclear across channels</li>
+            <li>Budget is spent, but true incrementality is unknown</li>
+            <li>Teams optimize tactics, but lack strategy</li>
+          </ul>
+        </article>
       </div>
     </section>
 
