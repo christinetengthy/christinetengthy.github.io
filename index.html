@@ -177,7 +177,7 @@
     .approach-note { padding-top: 14px; border-top: 1px solid rgba(60,60,60,0.1); }
     .approach-note strong { display: block; margin-bottom: 6px; font-size: 1.15rem; }
     .career-arc { padding: 36px; }
-    .career-head { display: grid; gap: 10px; margin-bottom: 30px; }
+    .career-head { display: grid; gap: 10px; margin-bottom: 34px; }
     .career-hero {
       display: grid;
       gap: 8px;
@@ -185,42 +185,88 @@
       border-bottom: 1px solid rgba(60,60,60,0.08);
     }
     .career-hero strong { font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1.04; }
-    .career-timeline { position: relative; display: grid; gap: 30px; }
-    .career-timeline::before {
-      content: "";
-      position: absolute;
-      left: 176px;
-      top: 6px;
-      bottom: 6px;
-      width: 2px;
-      background: rgba(63,63,63,0.18);
-    }
-    .career-item { display: grid; grid-template-columns: 150px 24px minmax(0, 1fr); gap: 20px; align-items: start; }
-    .career-meta { text-align: right; padding-top: 4px; }
-    .career-year { font-size: 1.05rem; font-weight: 700; }
-    .career-company { margin-top: 6px; color: var(--muted); font-size: .95rem; }
-    .career-dot {
-      position: relative;
-      width: 24px;
-      height: 24px;
+    .timeline-list { display: grid; gap: 34px; }
+    .timeline-item {
       display: grid;
-      place-items: center;
-      z-index: 1;
-      margin-top: 2px;
+      grid-template-columns: 150px 40px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 700ms ease, transform 700ms ease;
     }
-    .career-dot::before {
-      content: "";
+    .timeline-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-left {
+      text-align: right;
+      display: grid;
+      gap: 6px;
+      padding-top: 4px;
+    }
+    .timeline-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .timeline-sub {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .timeline-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100%;
+    }
+    .timeline-dot {
       width: 22px;
       height: 22px;
       border-radius: 50%;
       border: 2px solid var(--accent);
       background: #fff;
       box-shadow: 0 0 0 4px rgba(255,255,255,0.95);
+      flex-shrink: 0;
     }
-    .career-content h3 { font-size: 1.8rem; margin-bottom: 8px; }
-    .career-subtitle { font-style: italic; color: var(--muted); margin-bottom: 14px; }
-    .career-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .career-tag {
+    .timeline-line {
+      width: 2px;
+      flex: 1;
+      min-height: 120px;
+      background: rgba(63,63,63,0.18);
+      margin-top: 10px;
+    }
+    .timeline-item:last-child .timeline-line { display: none; }
+    .timeline-content h3 {
+      font-size: 1.85rem;
+      line-height: 1.14;
+      margin-bottom: 10px;
+    }
+    .timeline-content .lead {
+      font-size: 1.18rem;
+      color: var(--text);
+      max-width: 48ch;
+      margin-bottom: 14px;
+    }
+    .timeline-content p + p {
+      margin-top: 14px;
+    }
+    .impact {
+      margin: 20px 0;
+      padding-left: 18px;
+    }
+    .impact li {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .tags span {
       padding: 8px 12px;
       border-radius: 10px;
       background: rgba(63,63,63,0.06);
@@ -254,11 +300,22 @@
     @media (max-width: 980px) {
       .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr 1fr; }
       .insights-grid, .contact-wrap { grid-template-columns: 1fr; }
-      .career-timeline::before { left: 10px; }
-      .career-item { grid-template-columns: 24px minmax(0, 1fr); }
-      .career-meta { grid-column: 2; text-align: left; margin-bottom: 8px; padding-top: 0; }
-      .career-dot { grid-row: 1 / span 2; }
-      .career-content { grid-column: 2; }
+      .timeline-item { grid-template-columns: 24px minmax(0, 1fr); }
+      .timeline-left {
+        grid-column: 2;
+        text-align: left;
+        margin-bottom: 8px;
+        padding-top: 0;
+      }
+      .timeline-center {
+        grid-row: 1 / span 2;
+      }
+      .timeline-line {
+        min-height: 140px;
+      }
+      .timeline-content {
+        grid-column: 2;
+      }
     }
     @media (max-width: 760px) {
       .container { width: min(var(--max-width), calc(100% - 24px)); }
@@ -285,13 +342,13 @@
       .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr; }
       .section-heading { flex-direction: column; align-items: start; }
       .career-arc { padding: 24px; }
-      .career-content h3 { font-size: 1.45rem; }
+      .timeline-content h3 { font-size: 1.48rem; }
       .contact-wrap { padding: 28px 22px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
-      .reveal, .reveal.is-visible { opacity: 1; transform: none; }
+      .reveal, .reveal.is-visible, .timeline-item, .timeline-item.is-visible { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -432,45 +489,99 @@
 
     <section class="section" id="about">
       <div class="container">
-        <article class="career-arc reveal">
-          <div class="career-head">
+        <article class="career-arc">
+          <div class="career-head reveal">
             <span class="eyebrow">Career Arc</span>
             <div class="career-hero">
               <strong>3+ 年，橫跨 APAC 與 EU。</strong>
-              <p class="muted">把履歷的過往改成時間軸呈現，讓職涯脈絡更清楚。</p>
+              <p class="muted">以成長為導向的廣告判讀與跨市場實戰經驗，串起從數據到商業決策的完整脈絡。</p>
             </div>
           </div>
-          <div class="career-timeline">
-            <article class="career-item">
-              <div class="career-meta"><div class="career-year">現在</div><div class="career-company">Independent / Consultant</div></div>
-              <div class="career-dot"></div>
-              <div class="career-content">
+
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <span class="timeline-label">現在</span>
+                <span class="timeline-sub">Independent / Consultant</span>
+              </div>
+              <div class="timeline-center">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+              <div class="timeline-content">
                 <h3>Ads &amp; Growth Consultant</h3>
-                <p class="career-subtitle">以更清楚的成效判讀與成長邏輯，協助品牌做出更好的媒體決策。</p>
-                <p>聚焦於廣告成效判讀、策略規劃與成長決策支持，整合 RTB、attribution、incrementality、ROAS 與 budget allocation，建立完整的顧問視角。</p>
-                <div class="career-tags"><span class="career-tag">RTB</span><span class="career-tag">Attribution</span><span class="career-tag">Incrementality</span><span class="career-tag">Growth Strategy</span></div>
+                <p class="lead">Helping brands understand what truly drives performance — beyond surface-level ROAS.</p>
+                <p>專注於廣告成效判讀與成長策略，協助品牌拆解 attribution、驗證 incrementality，並建立可擴展的投放決策框架，而非單純優化數字表現。</p>
+                <ul class="impact">
+                  <li>Design decision frameworks for ROAS vs incrementality trade-offs</li>
+                  <li>Identify real growth drivers across channels and placements</li>
+                  <li>Support budget allocation for scalable and sustainable growth</li>
+                </ul>
+                <div class="tags">
+                  <span>RTB</span>
+                  <span>Attribution</span>
+                  <span>Incrementality</span>
+                  <span>Growth Strategy</span>
+                </div>
               </div>
-            </article>
-            <article class="career-item">
-              <div class="career-meta"><div class="career-year">過往</div><div class="career-company">Appier</div></div>
-              <div class="career-dot"></div>
-              <div class="career-content">
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <span class="timeline-label">過往</span>
+                <span class="timeline-sub">Appier</span>
+              </div>
+              <div class="timeline-center">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+              <div class="timeline-content">
                 <h3>Campaign Analyst</h3>
-                <p class="career-subtitle">跨 APAC 與 EU 的投放策略、成效優化與數據判讀經驗。</p>
-                <p>曾任 Appier Campaign Analyst，負責跨市場投放策略、成效優化與數據判讀，累積全球電商、遊戲與生活服務品牌的實戰經驗。</p>
-                <div class="career-tags"><span class="career-tag">APAC × EU</span><span class="career-tag">Performance Marketing</span><span class="career-tag">ROAS</span><span class="career-tag">Measurement</span></div>
+                <p class="lead">Managed 80+ performance campaigns across APAC, USA, and Europe.</p>
+                <p>負責跨市場投放策略與成效優化，涵蓋電商、遊戲與 O2O 產業，透過 RTB、attribution 與 incrementality 分析，推動成效成長與預算擴張。</p>
+                <ul class="impact">
+                  <li>Delivered 100%+ ROAS on key campaigns</li>
+                  <li>Drove 50%+ new user growth and 80K+ daily retargeting reach</li>
+                  <li>Contributed 15%+ of total revenue through core ad solutions</li>
+                  <li>Designed A/B tests &amp; incrementality experiments with 80%+ lift</li>
+                  <li>Led QBR insights that increased next-month budget by 15%</li>
+                </ul>
+                <div class="tags">
+                  <span>APAC × USA × EU</span>
+                  <span>RTB Optimization</span>
+                  <span>Attribution</span>
+                  <span>Incrementality</span>
+                  <span>ROAS</span>
+                </div>
               </div>
-            </article>
-            <article class="career-item">
-              <div class="career-meta"><div class="career-year">更早以前</div><div class="career-company">International Retail Ecommerce</div></div>
-              <div class="career-dot"></div>
-              <div class="career-content">
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-left">
+                <span class="timeline-label">更早以前</span>
+                <span class="timeline-sub">Retail Ecommerce</span>
+              </div>
+              <div class="timeline-center">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+              <div class="timeline-content">
                 <h3>Retail Ecommerce Operator</h3>
-                <p class="career-subtitle">從電商營運建立市場節奏、商業轉化與執行協作的基礎。</p>
-                <p>在國際零售電商營運角色中累積對市場節奏、商業轉化與日常執行的理解，成為後續投入數位廣告與成效優化工作的基礎。</p>
-                <div class="career-tags"><span class="career-tag">Ecommerce</span><span class="career-tag">Operations</span><span class="career-tag">Market Coordination</span><span class="career-tag">Commercial Thinking</span></div>
+                <p class="lead">Built a strong foundation in revenue-driven marketing and conversion strategy.</p>
+                <p>在多平台電商（Shopee、Momo、PChome）負責營運與廣告策略，從流量獲取、促銷設計到轉換優化，建立完整的商業轉化思維。</p>
+                <ul class="impact">
+                  <li>Achieved ROAS 6.6 (Shopee) and ROAS 10 (Momo)</li>
+                  <li>Contributed ~10% monthly revenue via campaign operations</li>
+                  <li>Drove consistent follower growth and repeat purchase behavior</li>
+                </ul>
+                <div class="tags">
+                  <span>Ecommerce</span>
+                  <span>Performance Marketing</span>
+                  <span>Conversion Strategy</span>
+                  <span>Revenue Growth</span>
+                </div>
               </div>
-            </article>
+            </div>
           </div>
         </article>
       </div>
@@ -546,6 +657,19 @@
     document.querySelectorAll('.reveal, [data-count]').forEach(function (element) {
       observer.observe(element);
     });
+
+    const items = document.querySelectorAll('.timeline-item');
+    const timelineObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.45 }
+    );
+    items.forEach(function (item) { timelineObserver.observe(item); });
   </script>
 </body>
 </html>
