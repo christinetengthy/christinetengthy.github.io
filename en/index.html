@@ -115,9 +115,10 @@
     .button:hover { transform: translateY(-2px); }
     .button-primary { background: var(--accent); color: #fff; box-shadow: 0 16px 28px rgba(0,0,0,0.12); }
     .button-secondary { background: #fff; border-color: var(--line); }
-    .metrics-grid, .expertise-grid, .services-grid, .insight-stack { display: grid; gap: 18px; }
+    .metrics-grid, .expertise-grid, .services-grid, .insight-stack, .cert-grid { display: grid; gap: 18px; }
     .metrics-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .expertise-grid, .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cert-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .services-section { padding: 6px 0 72px; }
     .services-spotlight {
       padding: 36px;
@@ -128,7 +129,7 @@
     }
     .services-section .section-heading { margin-bottom: 26px; }
     .services-grid--spotlight { grid-template-columns: 1.06fr .94fr; align-items: stretch; }
-    .card, .metric-card, .panel, .insight-block {
+    .card, .metric-card, .panel, .insight-block, .cert-item {
       background: var(--panel);
       border: 1px solid rgba(60,60,60,0.08);
       border-radius: var(--radius);
@@ -137,7 +138,7 @@
     .metric-card { padding: 28px 24px; display: grid; gap: 10px; min-height: 160px; }
     .metric-card small { color: var(--muted); font-size: .84rem; text-transform: uppercase; letter-spacing: .08em; }
     .metric-number { font-size: clamp(2.3rem, 4vw, 3.1rem); font-weight: 700; letter-spacing: -.04em; }
-    .card, .panel, .insight-block { padding: 28px; }
+    .card, .panel, .insight-block, .cert-item { padding: 28px; }
     .service-card {
       min-height: 100%;
       padding: 32px;
@@ -188,6 +189,7 @@
       margin-bottom: 32px;
     }
     .section-heading p { max-width: 46ch; color: var(--muted); }
+    .cert-item strong { display: block; font-size: 1.15rem; margin-bottom: 8px; }
     .experience-copy { max-width: 860px; display: grid; gap: 16px; }
     .experience-points { display: grid; gap: 12px; margin-top: 6px; }
     .experience-points p { position: relative; padding-left: 18px; }
@@ -389,7 +391,7 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     @media (max-width: 980px) {
-      .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr 1fr; }
+      .metrics-grid, .expertise-grid, .services-grid, .approach-notes, .cert-grid { grid-template-columns: 1fr 1fr; }
       .services-grid--spotlight { grid-template-columns: 1fr; }
       .service-card.primary { transform: none; }
       .contact-wrap { grid-template-columns: 1fr; }
@@ -430,7 +432,7 @@
       .nav-links.is-open { display: flex; }
       .nav-links a { width: 100%; }
       .hero { padding-top: 28px; }
-      .metrics-grid, .expertise-grid, .services-grid, .approach-notes { grid-template-columns: 1fr; }
+      .metrics-grid, .expertise-grid, .services-grid, .approach-notes, .cert-grid { grid-template-columns: 1fr; }
       .services-spotlight { padding: 28px 22px; }
       .section-heading { flex-direction: column; align-items: start; }
       .timeline-card { padding: 24px 22px; }
@@ -533,6 +535,26 @@
           <article class="card reveal"><div class="card-topline"><span class="chip">Strategy Planning</span><span class="card-index">02</span></div><h3>User Acquisition / Retention</h3><p class="muted">Build more resilient growth plans from acquisition through retention.</p></article>
           <article class="card reveal"><div class="card-topline"><span class="chip">Performance Optimization</span><span class="card-index">03</span></div><h3>ROAS / LTV / Incrementality</h3><p class="muted">Move beyond surface-level metrics to evaluate what is actually creating growth.</p></article>
           <article class="card reveal"><div class="card-topline"><span class="chip">Budget Allocation &amp; Growth Strategy</span><span class="card-index">04</span></div><h3>Budget Allocation / Growth Planning</h3><p class="muted">Find more efficient ways to scale while staying grounded in performance logic.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="eyebrow">Certifications</span>
+            <h2>Platform credentials and analytical training that support the work.</h2>
+          </div>
+          <p>Covering ad platforms, analytics, and business fundamentals that reinforce day-to-day performance marketing and growth strategy work.</p>
+        </div>
+        <div class="cert-grid">
+          <article class="cert-item reveal"><strong>Google Ads Search Certification</strong><p class="muted">Search advertising platform certification</p></article>
+          <article class="cert-item reveal"><strong>Google Data Analytics Specialization</strong><p class="muted">Structured analytics training and interpretation foundation</p></article>
+          <article class="cert-item reveal"><strong>LINE Ads Platform Expert</strong><p class="muted">Certified expertise in LINE Ads Platform operations</p></article>
+          <article class="cert-item reveal"><strong>LINE Official Account Expert</strong><p class="muted">Certified expertise in LINE Official Account management</p></article>
+          <article class="cert-item reveal"><strong>IELTS 6.0</strong><p class="muted">English proficiency qualification</p></article>
+          <article class="cert-item reveal"><strong>International Trade Management Certification | Class C</strong><p class="muted">Trade and commercial operations certification</p></article>
         </div>
       </div>
     </section>
