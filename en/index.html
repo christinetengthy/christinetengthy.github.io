@@ -225,17 +225,21 @@
     .service-overview-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 24px;
+      margin-bottom: 32px;
     }
     .service-summary-card {
-      padding: 28px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(60,60,60,0.08);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.075);
+      min-height: 100%;
+      padding: 30px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,249,250,0.9));
+      border: 1px solid rgba(140,148,160,0.16);
+      box-shadow:
+        0 18px 34px rgba(166, 176, 194, 0.16),
+        0 34px 58px -34px rgba(65, 72, 82, 0.34);
       display: grid;
-      gap: 18px;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 20px;
     }
     .service-summary-card .chip {
       justify-self: start;
@@ -255,25 +259,49 @@
       letter-spacing: 0.04em;
       margin-bottom: 0;
     }
+    .service-summary-card h3 {
+      max-width: 16ch;
+      font-size: clamp(1.58rem, 2.2vw, 2.1rem);
+      line-height: 1.34;
+    }
     .summary-facts {
       display: grid;
-      gap: 10px;
+      align-content: start;
+      gap: 0;
       margin: 0;
     }
     .summary-fact {
       display: grid;
-      grid-template-columns: 86px minmax(0, 1fr);
-      gap: 12px;
-      padding-top: 10px;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      padding: 14px 0;
       border-top: 1px solid rgba(60,60,60,0.08);
       color: var(--muted);
     }
+    .summary-fact:first-child { border-top: 0; padding-top: 0; }
     .summary-fact dt {
       color: var(--accent);
       font-weight: 700;
       font-size: .88rem;
     }
     .summary-fact dd { margin: 0; }
+    .summary-fee-panel {
+      align-self: end;
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(246,247,248,0.92);
+      border: 1px solid rgba(60,60,60,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.76);
+    }
+    .summary-fee-label {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
     .summary-pricing {
       display: grid;
       gap: 0;
@@ -302,6 +330,16 @@
       grid-template-columns: 1fr;
       gap: 2px;
       background: rgba(63,63,63,0.055);
+    }
+    .summary-quote {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .summary-quote strong {
+      color: var(--accent);
+      font-size: 1.08rem;
     }
     .service-process-panel {
       margin: 28px 0;
@@ -1172,8 +1210,8 @@
             <p>Choose the support model that matches your current stage, with clearer performance logic behind media decisions and growth direction.</p>
           </div>
           <div class="service-overview-grid">
-            <article class="service-summary-card"><span class="chip">Ad Campaign Management | 4 Weeks</span><h3>Stabilize campaign delivery and keep media spend more controllable.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands that need consistent volume but lack media buying and optimization capacity.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>4-week cycle with weekly meeting tracking and adjustments.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Campaign launch, test plan, optimization log, and monthly report.</dd></div><div class="summary-fact"><dt>Fee Model</dt><dd><div class="summary-pricing"><div class="summary-price-row"><span>Under NTD 50,000</span><strong>NTD 10,000 / month</strong></div><div class="summary-price-row"><span>NTD 50,000-300,000</span><strong>22%</strong></div><div class="summary-price-row"><span>NTD 300,000-1,500,000</span><strong>20%</strong></div><div class="summary-price-row"><span>Above NTD 1,500,000</span><strong>18%</strong></div><div class="summary-price-row summary-price-row--note"><span>Minimum engagement</span><strong>From NTD 15,000</strong></div></div></dd></div></dl></article>
-            <article class="service-summary-card"><span class="chip">Performance Analysis Consulting | 8 Weeks</span><h3>Clarify performance quality and build evidence for budget and growth decisions.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands already running campaigns but unclear on performance source, root issues, or budget direction.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>8-week consulting rhythm with weekly data review and strategy refinement.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Data audit, attribution review, budget recommendations, and growth priorities.</dd></div><div class="summary-fact"><dt>Fee Model</dt><dd>Quote provided after consultation form submission.</dd></div></dl></article>
+            <article class="service-summary-card"><span class="chip">Ad Campaign Management | 4 Weeks</span><h3>Stabilize campaign delivery and keep media spend more controllable.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands that need consistent volume but lack media buying and optimization capacity.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>4-week cycle with weekly meeting tracking and adjustments.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Campaign launch, test plan, optimization log, and monthly report.</dd></div></dl><div class="summary-fee-panel"><span class="summary-fee-label">Fee Model</span><div class="summary-pricing"><div class="summary-price-row"><span>Under NTD 50,000</span><strong>NTD 10,000 / month</strong></div><div class="summary-price-row"><span>NTD 50,000-300,000</span><strong>22%</strong></div><div class="summary-price-row"><span>NTD 300,000-1,500,000</span><strong>20%</strong></div><div class="summary-price-row"><span>Above NTD 1,500,000</span><strong>18%</strong></div><div class="summary-price-row summary-price-row--note"><span>Minimum engagement</span><strong>From NTD 15,000</strong></div></div></div></article>
+            <article class="service-summary-card"><span class="chip">Performance Analysis Consulting | 8 Weeks</span><h3>Clarify performance quality and build evidence for budget and growth decisions.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands already running campaigns but unclear on performance source, root issues, or budget direction.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>8-week consulting rhythm with weekly data review and strategy refinement.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Data audit, attribution review, budget recommendations, and growth priorities.</dd></div></dl><div class="summary-fee-panel"><span class="summary-fee-label">Fee Model</span><div class="summary-quote"><span>After consultation form submission</span><strong>Quote provided based on scope</strong></div></div></article>
           </div>
           <div class="service-process-panel" id="service-process">
             <div class="section-heading"><div><span class="eyebrow">Engagement Process</span><h2>From initial consultation to final report, every step has a clear rhythm.</h2></div><p>Clarify needs, confirm the engagement plan, run the project rhythm, then close with execution analysis and a final report.</p></div>

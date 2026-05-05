@@ -225,17 +225,21 @@
     .service-overview-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 24px;
+      margin-bottom: 32px;
     }
     .service-summary-card {
-      padding: 28px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(60,60,60,0.08);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.075);
+      min-height: 100%;
+      padding: 30px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,249,250,0.9));
+      border: 1px solid rgba(140,148,160,0.16);
+      box-shadow:
+        0 18px 34px rgba(166, 176, 194, 0.16),
+        0 34px 58px -34px rgba(65, 72, 82, 0.34);
       display: grid;
-      gap: 18px;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 20px;
     }
     .service-summary-card .chip {
       justify-self: start;
@@ -255,25 +259,49 @@
       letter-spacing: 0.04em;
       margin-bottom: 0;
     }
+    .service-summary-card h3 {
+      max-width: 16ch;
+      font-size: clamp(1.58rem, 2.2vw, 2.1rem);
+      line-height: 1.34;
+    }
     .summary-facts {
       display: grid;
-      gap: 10px;
+      align-content: start;
+      gap: 0;
       margin: 0;
     }
     .summary-fact {
       display: grid;
-      grid-template-columns: 86px minmax(0, 1fr);
-      gap: 12px;
-      padding-top: 10px;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      padding: 14px 0;
       border-top: 1px solid rgba(60,60,60,0.08);
       color: var(--muted);
     }
+    .summary-fact:first-child { border-top: 0; padding-top: 0; }
     .summary-fact dt {
       color: var(--accent);
       font-weight: 700;
       font-size: .88rem;
     }
     .summary-fact dd { margin: 0; }
+    .summary-fee-panel {
+      align-self: end;
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(246,247,248,0.92);
+      border: 1px solid rgba(60,60,60,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.76);
+    }
+    .summary-fee-label {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
     .summary-pricing {
       display: grid;
       gap: 0;
@@ -302,6 +330,16 @@
       grid-template-columns: 1fr;
       gap: 2px;
       background: rgba(63,63,63,0.055);
+    }
+    .summary-quote {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .summary-quote strong {
+      color: var(--accent);
+      font-size: 1.08rem;
     }
     .service-process-panel {
       margin: 28px 0;
@@ -1179,19 +1217,17 @@
                 <div class="summary-fact"><dt>適合對象</dt><dd>需要穩定出量，但缺少投手與優化能力的品牌。</dd></div>
                 <div class="summary-fact"><dt>合作週期</dt><dd>以 4 週為一輪，每週追蹤成效並調整投放。</dd></div>
                 <div class="summary-fact"><dt>核心交付</dt><dd>投放啟動、測試設計、優化紀錄、月結報告。</dd></div>
-                <div class="summary-fact">
-                  <dt>費用方式</dt>
-                  <dd>
-                    <div class="summary-pricing">
-                      <div class="summary-price-row"><span>5 萬以下</span><strong>新台幣 10,000 元／月</strong></div>
-                      <div class="summary-price-row"><span>5 萬至 30 萬</span><strong>22%</strong></div>
-                      <div class="summary-price-row"><span>30 萬至 150 萬</span><strong>20%</strong></div>
-                      <div class="summary-price-row"><span>150 萬以上</span><strong>18%</strong></div>
-                      <div class="summary-price-row summary-price-row--note"><span>最低合作門檻</span><strong>新台幣 15,000 元起</strong></div>
-                    </div>
-                  </dd>
-                </div>
               </dl>
+              <div class="summary-fee-panel">
+                <span class="summary-fee-label">費用方式</span>
+                <div class="summary-pricing">
+                  <div class="summary-price-row"><span>5 萬以下</span><strong>新台幣 10,000 元／月</strong></div>
+                  <div class="summary-price-row"><span>5 萬至 30 萬</span><strong>22%</strong></div>
+                  <div class="summary-price-row"><span>30 萬至 150 萬</span><strong>20%</strong></div>
+                  <div class="summary-price-row"><span>150 萬以上</span><strong>18%</strong></div>
+                  <div class="summary-price-row summary-price-row--note"><span>最低合作門檻</span><strong>新台幣 15,000 元起</strong></div>
+                </div>
+              </div>
             </article>
             <article class="service-summary-card">
               <span class="chip">成效分析顧問｜8 週</span>
@@ -1200,8 +1236,14 @@
                 <div class="summary-fact"><dt>適合對象</dt><dd>已有投放，但不確定成效來源、問題原因或預算分配方向的品牌。</dd></div>
                 <div class="summary-fact"><dt>合作週期</dt><dd>8 週顧問合作，每週檢視數據並調整策略。</dd></div>
                 <div class="summary-fact"><dt>核心交付</dt><dd>數據健檢、歸因判讀、預算配置建議與成長優先順序。</dd></div>
-                <div class="summary-fact"><dt>費用方式</dt><dd>填寫諮詢表單後，依需求提供顧問報價。</dd></div>
               </dl>
+              <div class="summary-fee-panel">
+                <span class="summary-fee-label">費用方式</span>
+                <div class="summary-quote">
+                  <span>填寫諮詢表單後</span>
+                  <strong>依需求提供顧問報價</strong>
+                </div>
+              </div>
             </article>
           </div>
 
