@@ -271,6 +271,35 @@
       font-size: .88rem;
     }
     .summary-fact dd { margin: 0; }
+    .summary-pricing {
+      display: grid;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(60,60,60,0.08);
+      background: rgba(255,255,255,0.58);
+    }
+    .summary-price-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(60,60,60,0.07);
+      line-height: 1.45;
+    }
+    .summary-price-row:last-child { border-bottom: 0; }
+    .summary-price-row span { color: var(--muted); }
+    .summary-price-row strong {
+      color: var(--accent);
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+    .summary-price-row--note {
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background: rgba(63,63,63,0.055);
+    }
     .service-process-panel {
       margin: 28px 0;
       padding: 28px;
@@ -1020,6 +1049,7 @@
         min-height: auto;
         padding: 20px 18px;
       }
+      .summary-price-row { grid-template-columns: 1fr; gap: 2px; }
       .pricing-row { grid-template-columns: 1fr; gap: 4px; }
       .pricing-row--head { display: none; }
       .section-heading { flex-direction: column; align-items: start; }
@@ -1146,7 +1176,18 @@
                 <div class="summary-fact"><dt>適合對象</dt><dd>需要穩定出量，但缺少投手與優化能力的品牌。</dd></div>
                 <div class="summary-fact"><dt>合作週期</dt><dd>以 4 週為一輪，每週追蹤成效並調整投放。</dd></div>
                 <div class="summary-fact"><dt>核心交付</dt><dd>投放啟動、測試設計、優化紀錄、月結報告。</dd></div>
-                <div class="summary-fact"><dt>費用方式</dt><dd>5 萬以下新台幣 10,000 元／月；5 萬至 30 萬 22%；30 萬至 150 萬 20%；150 萬以上 18%。最低合作門檻新台幣 15,000 元起。</dd></div>
+                <div class="summary-fact">
+                  <dt>費用方式</dt>
+                  <dd>
+                    <div class="summary-pricing">
+                      <div class="summary-price-row"><span>5 萬以下</span><strong>新台幣 10,000 元／月</strong></div>
+                      <div class="summary-price-row"><span>5 萬至 30 萬</span><strong>22%</strong></div>
+                      <div class="summary-price-row"><span>30 萬至 150 萬</span><strong>20%</strong></div>
+                      <div class="summary-price-row"><span>150 萬以上</span><strong>18%</strong></div>
+                      <div class="summary-price-row summary-price-row--note"><span>最低合作門檻</span><strong>新台幣 15,000 元起</strong></div>
+                    </div>
+                  </dd>
+                </div>
               </dl>
             </article>
             <article class="service-summary-card">

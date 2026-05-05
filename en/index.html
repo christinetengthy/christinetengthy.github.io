@@ -271,6 +271,35 @@
       font-size: .88rem;
     }
     .summary-fact dd { margin: 0; }
+    .summary-pricing {
+      display: grid;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(60,60,60,0.08);
+      background: rgba(255,255,255,0.58);
+    }
+    .summary-price-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(60,60,60,0.07);
+      line-height: 1.45;
+    }
+    .summary-price-row:last-child { border-bottom: 0; }
+    .summary-price-row span { color: var(--muted); }
+    .summary-price-row strong {
+      color: var(--accent);
+      font-size: .92rem;
+      white-space: nowrap;
+    }
+    .summary-price-row--note {
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background: rgba(63,63,63,0.055);
+    }
     .service-process-panel {
       margin: 28px 0;
       padding: 28px;
@@ -1020,6 +1049,7 @@
         min-height: auto;
         padding: 20px 18px;
       }
+      .summary-price-row { grid-template-columns: 1fr; gap: 2px; }
       .pricing-row { grid-template-columns: 1fr; gap: 4px; }
       .pricing-row--head { display: none; }
       .section-heading { flex-direction: column; align-items: start; }
@@ -1139,7 +1169,7 @@
             <p>Choose the support model that matches your current stage, with clearer performance logic behind media decisions and growth direction.</p>
           </div>
           <div class="service-overview-grid">
-            <article class="service-summary-card"><span class="chip">Ad Campaign Management | 4 Weeks</span><h3>Stabilize campaign delivery and keep media spend more controllable.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands that need consistent volume but lack media buying and optimization capacity.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>4-week cycle with weekly meeting tracking and adjustments.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Campaign launch, test plan, optimization log, and monthly report.</dd></div><div class="summary-fact"><dt>Fee Model</dt><dd>Under NTD 50,000: NTD 10,000 / month; NTD 50,000-300,000: 22%; NTD 300,000-1,500,000: 20%; above NTD 1,500,000: 18%. Minimum engagement starts from NTD 15,000.</dd></div></dl></article>
+            <article class="service-summary-card"><span class="chip">Ad Campaign Management | 4 Weeks</span><h3>Stabilize campaign delivery and keep media spend more controllable.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands that need consistent volume but lack media buying and optimization capacity.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>4-week cycle with weekly meeting tracking and adjustments.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Campaign launch, test plan, optimization log, and monthly report.</dd></div><div class="summary-fact"><dt>Fee Model</dt><dd><div class="summary-pricing"><div class="summary-price-row"><span>Under NTD 50,000</span><strong>NTD 10,000 / month</strong></div><div class="summary-price-row"><span>NTD 50,000-300,000</span><strong>22%</strong></div><div class="summary-price-row"><span>NTD 300,000-1,500,000</span><strong>20%</strong></div><div class="summary-price-row"><span>Above NTD 1,500,000</span><strong>18%</strong></div><div class="summary-price-row summary-price-row--note"><span>Minimum engagement</span><strong>From NTD 15,000</strong></div></div></dd></div></dl></article>
             <article class="service-summary-card"><span class="chip">Performance Analysis Consulting | 8 Weeks</span><h3>Clarify performance quality and build evidence for budget and growth decisions.</h3><dl class="summary-facts"><div class="summary-fact"><dt>Best Fit</dt><dd>Brands already running campaigns but unclear on performance source, root issues, or budget direction.</dd></div><div class="summary-fact"><dt>Timeline</dt><dd>8-week consulting rhythm with weekly data review and strategy refinement.</dd></div><div class="summary-fact"><dt>Core Output</dt><dd>Data audit, attribution review, budget recommendations, and growth priorities.</dd></div><div class="summary-fact"><dt>Fee Model</dt><dd>Quote provided after consultation form submission.</dd></div></dl></article>
           </div>
           <div class="service-process-panel" id="service-process">
