@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Christine Teng | 廣告成效分析與成長顧問</title>
   <meta name="description" content="Christine Teng 專注於廣告數據分析、成效優化、歸因（attribution）與成長策略（growth strategy），具備亞太（APAC）、美國（USA）與歐洲（EU）跨市場投放經驗。">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPPJGKYBBK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NPPJGKYBBK');
+  </script>
   <style>
     :root {
       --bg: #f4f4f4;
@@ -209,6 +216,355 @@
     }
     .service-card h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); margin-bottom: 10px; }
     .service-card .muted { font-size: 1.03rem; }
+    .service-card--execution,
+    .service-card--consulting {
+      grid-column: 1 / -1;
+      display: grid;
+      gap: 28px;
+    }
+    .service-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .service-summary-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(60,60,60,0.08);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.075);
+      display: grid;
+      gap: 18px;
+    }
+    .service-summary-card .chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(232,234,237,0.95), rgba(220,223,227,0.9));
+      border: 1px solid rgba(196, 201, 208, 0.65);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        inset 0 -1px 1px rgba(181, 187, 196, 0.2);
+      color: #70757c;
+      font-size: 0.74rem;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      margin-bottom: 0;
+    }
+    .summary-facts {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+    }
+    .summary-fact {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(60,60,60,0.08);
+      color: var(--muted);
+    }
+    .summary-fact dt {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .88rem;
+    }
+    .summary-fact dd { margin: 0; }
+    .service-process-panel {
+      margin: 28px 0;
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(60,60,60,0.08);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.065);
+    }
+    .full-plan-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .full-plan {
+      border-radius: 24px;
+      border: 1px solid rgba(60,60,60,0.08);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.065);
+      overflow: hidden;
+    }
+    .full-plan > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 24px;
+      cursor: pointer;
+      list-style: none;
+      background: rgba(63,63,63,0.055);
+    }
+    .full-plan > summary::-webkit-details-marker { display: none; }
+    .full-plan > summary::after {
+      content: "+";
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 32px;
+      background: rgba(63,63,63,0.08);
+      color: var(--accent);
+      font-size: 1.16rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .full-plan[open] > summary::after { content: "-"; }
+    .full-plan-summary {
+      display: grid;
+      gap: 4px;
+    }
+    .full-plan-summary strong {
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      line-height: 1.32;
+    }
+    .full-plan-summary span {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .full-plan-content {
+      display: grid;
+      gap: 28px;
+      padding: 24px;
+    }
+    .service-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .service-fit {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(246,246,246,0.92);
+      border: 1px solid rgba(60,60,60,0.08);
+    }
+    .service-fit strong,
+    .service-block-title {
+      display: block;
+      margin-bottom: 8px;
+      font-size: .9rem;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .service-cycle {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .service-cycle-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .service-toggle-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .service-toggle-button {
+      border: 1px solid rgba(60,60,60,0.1);
+      background: rgba(255,255,255,0.76);
+      color: #4f545b;
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-family: inherit;
+      font-size: .84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .service-toggle-button:hover,
+    .service-toggle-button:focus-visible {
+      background: rgba(63,63,63,0.08);
+      border-color: rgba(60,60,60,0.18);
+      color: var(--text);
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .week-card {
+      border-radius: 18px;
+      background: rgba(250,250,250,0.94);
+      border: 1px solid rgba(60,60,60,0.08);
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.025);
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .week-card[open] {
+      background: rgba(255,255,255,0.94);
+      border-color: rgba(60,60,60,0.14);
+      box-shadow: 0 14px 26px rgba(0,0,0,0.055);
+    }
+    .week-card summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px;
+      cursor: pointer;
+      list-style: none;
+      background: rgba(63,63,63,0.045);
+      color: #343434;
+    }
+    .week-card summary::-webkit-details-marker { display: none; }
+    .week-card summary::after {
+      content: "+";
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 28px;
+      background: rgba(63,63,63,0.08);
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .week-card[open] summary::after { content: "-"; }
+    .week-card[open] summary {
+      background: rgba(63,63,63,0.085);
+      color: var(--text);
+    }
+    .week-card summary h4 {
+      font-weight: 700;
+      color: inherit;
+    }
+    .week-content {
+      display: grid;
+      gap: 10px;
+      padding: 0 20px 18px;
+    }
+    .week-card h4,
+    .service-block h4 {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.38;
+    }
+    .week-card ul,
+    .service-block ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .week-card li,
+    .service-block li { margin-bottom: 6px; }
+    .deliverable {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(60,60,60,0.08);
+      color: var(--text);
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .process-step {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(60,60,60,0.08);
+      display: grid;
+      gap: 10px;
+    }
+    .process-step span {
+      color: rgba(63,63,63,0.48);
+      font-size: .86rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .process-step strong {
+      font-size: 1.08rem;
+      line-height: 1.42;
+    }
+    .service-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .78fr);
+      gap: 18px;
+    }
+    .service-bottom--single { grid-template-columns: 1fr; }
+    .service-block {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(60,60,60,0.08);
+    }
+    .pricing-table {
+      display: grid;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(60,60,60,0.08);
+      background: rgba(255,255,255,0.82);
+    }
+    .pricing-formula {
+      margin: 0 0 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(63,63,63,0.07);
+      color: #4f545b;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+    .pricing-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      padding: 13px 15px;
+      border-bottom: 1px solid rgba(60,60,60,0.07);
+      align-items: center;
+    }
+    .pricing-row:last-child { border-bottom: 0; }
+    .pricing-row strong { white-space: nowrap; }
+    .pricing-row--head {
+      background: rgba(63,63,63,0.06);
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .pricing-threshold {
+      display: grid;
+      gap: 4px;
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      background: rgba(63,63,63,0.08);
+      border: 1px solid rgba(60,60,60,0.08);
+    }
+    .pricing-threshold span {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--accent);
+    }
+    .pricing-threshold strong {
+      font-size: 1.08rem;
+      line-height: 1.45;
+    }
+    .service-note {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(63,63,63,0.08);
+      color: #3f3f3f;
+      font-weight: 700;
+    }
     .card-topline { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
     .chip {
       display: inline-flex;
@@ -299,6 +655,63 @@
       line-height: 1.8;
       max-width: none;
       text-wrap: pretty;
+    }
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .process-step-card {
+      min-height: 230px;
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(247,248,249,0.76);
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      box-shadow: 0 12px 22px rgba(0,0,0,0.028);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+    .process-step-card:hover,
+    .process-step-card:focus-within {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.045);
+    }
+    .process-step-card .card-topline {
+      align-items: flex-start;
+      margin-bottom: 0;
+    }
+    .process-step-card .chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(232,234,237,0.82), rgba(220,223,227,0.76));
+      border: 1px solid rgba(196, 201, 208, 0.36);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+      color: #70757c;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 0;
+    }
+    .process-step-card .card-index {
+      font-size: clamp(1.65rem, 2.4vw, 2.05rem);
+      color: rgba(146, 151, 159, 0.24);
+      line-height: 1;
+    }
+    .process-step-card > div:last-child {
+      display: grid;
+      gap: 12px;
+    }
+    .process-step-card h3 {
+      font-size: clamp(1.05rem, 1.5vw, 1.24rem);
+      line-height: 1.45;
+      color: #4f545b;
+    }
+    .process-step-card .muted {
+      font-size: 0.96rem;
+      line-height: 1.82;
+      color: #838890;
     }
     .muted { color: var(--muted); }
     .placeholder {
@@ -546,6 +959,11 @@
       .metrics-grid, .services-grid, .approach-notes, .cert-grid { grid-template-columns: 1fr 1fr; }
       .services-grid--spotlight { grid-template-columns: 1fr; }
       .service-card.primary { transform: none; }
+      .service-overview-grid { grid-template-columns: 1fr; }
+      .service-intro,
+      .service-bottom { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .process-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .contact-wrap { grid-template-columns: 1fr; }
       .contact-actions, .contact-socials { align-items: flex-start; justify-content: flex-start; }
       .expertise-board { grid-template-columns: 1fr; }
@@ -589,6 +1007,21 @@
       .hero { padding-top: 28px; }
       .metrics-grid, .services-grid, .approach-notes, .cert-grid { grid-template-columns: 1fr; }
       .services-spotlight { padding: 28px 22px; }
+      .service-summary-card,
+      .service-process-panel,
+      .full-plan-content { padding: 20px; }
+      .summary-fact { grid-template-columns: 1fr; gap: 4px; }
+      .service-cycle-head { align-items: flex-start; flex-direction: column; }
+      .week-card summary { padding: 16px; }
+      .week-content { padding: 0 16px 16px; }
+      .process-grid { grid-template-columns: 1fr; }
+      .process-flow { grid-template-columns: 1fr; }
+      .process-step-card {
+        min-height: auto;
+        padding: 20px 18px;
+      }
+      .pricing-row { grid-template-columns: 1fr; gap: 4px; }
+      .pricing-row--head { display: none; }
       .section-heading { flex-direction: column; align-items: start; }
       .timeline-card { padding: 24px 22px; }
       .timeline-content h3 { font-size: 1.48rem; }
@@ -621,10 +1054,10 @@
       <div class="nav-wrap">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">選單</button>
         <nav class="nav-links" id="site-nav" aria-label="主導覽">
-          <a href="#expertise">專長</a>
           <a href="#experience">經驗</a>
           <a href="#services">服務</a>
-          <a href="#about">職涯經歷</a>
+          <a href="#service-process">合作流程</a>
+          <a href="#about">專業經歷</a>
           <a href="#certifications">證照</a>
           <a href="#insights">專欄</a>
           <a href="#contact" class="nav-cta">聯絡</a>
@@ -654,7 +1087,7 @@
           <p class="lead">橫跨亞太、美國與歐洲的投放經驗，聚焦於即時競價、歸因與增量效果，協助品牌更清楚理解媒體表現，做出更穩定的成長決策。</p>
           <div class="cta-group">
             <a class="button button-primary" href="#contact">開始合作</a>
-            <a class="button button-secondary" href="#expertise">查看專長</a>
+            <a class="button button-secondary" href="#service-process">查看合作流程</a>
           </div>
           <div class="approach-notes">
             <div class="approach-note"><strong>訊號診斷</strong><p>釐清數據訊號與真正的問題來源。</p></div>
@@ -671,24 +1104,6 @@
         <article class="metric-card reveal"><small>投放領域</small><div class="metric-number" data-count="10" data-prefix="" data-suffix="+">0</div><p class="muted">投放領域超過 10 種，涵蓋電商、外送、筆記型應用程式、遊戲、修圖應用程式、影音串流、航空、VPN、銀行金融與停車服務。</p></article>
         <article class="metric-card reveal"><small>預算規模</small><div class="metric-number" data-count="7" data-prefix="" data-suffix="-digit">0</div><p class="muted">每月負責百萬級以上投放預算管理。</p></article>
         <article class="metric-card reveal"><small>市場經驗</small><div class="metric-number" data-count="3" data-prefix="" data-suffix="+ years">0</div><p class="muted">橫跨亞太（APAC）、美國（USA）與歐洲（EU）的跨市場投放經驗。</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="expertise">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">專長</span>
-            <h2>以結構化方法處理成效、衡量與成長問題。</h2>
-          </div>
-          <p>聚焦於廣告分析、策略規劃、成效優化與預算配置，讓媒體工作更清楚、更有依據，也更貼近商業目標。</p>
-        </div>
-        <div class="expertise-board reveal">
-          <article class="expertise-tile"><div class="card-topline"><span class="chip">成效衡量</span><span class="card-index">01</span></div><div><h3>成效訊號與歸因判讀</h3><p class="muted">拆解數據訊號，理解廣告成效背後的真正原因。</p></div></article>
-          <article class="expertise-tile"><div class="card-topline"><span class="chip">增長策略</span><span class="card-index">02</span></div><div><h3>全漏斗獲客與留存</h3><p class="muted">涵蓋觸及、獲客、轉化、再行銷與留存，建立更完整的成長路徑。</p></div></article>
-          <article class="expertise-tile"><div class="card-topline"><span class="chip">效益判讀</span><span class="card-index">03</span></div><div><h3>投資效益與增量分析</h3><p class="muted">不只看表面數字，而是判讀哪些投放真正帶來有效增長。</p></div></article>
-          <article class="expertise-tile"><div class="card-topline"><span class="chip">資源配置</span><span class="card-index">04</span></div><div><h3>預算配置與擴張規劃</h3><p class="muted">在有限預算中找到更有效率的放大方式。</p></div></article>
-        </div>
       </div>
     </section>
 
@@ -721,11 +1136,114 @@
               <span class="eyebrow">服務</span>
               <h2>從投放執行到成效顧問，提供兩種合作方式。</h2>
             </div>
-            <p>對應不同階段的品牌需求，以更清楚的成效邏輯支撐媒體決策與成長方向。</p>
+            <p>依照品牌所處階段，提供投放執行與成效分析支援，讓媒體決策與成長方向更有依據。</p>
           </div>
-          <div class="services-grid services-grid--spotlight">
-            <article class="card service-card primary reveal"><span class="chip">廣告投放執行支援</span><h3>以紀律化執行與快速優化，穩定推進帳戶表現。</h3><p class="muted">執行廣告投放、管理日常優化與回報節奏，讓帳戶表現保持穩定並持續迭代。</p><ul class="service-list"><li>媒體投放與日常優化</li><li>成效監控與回報整理</li><li>支援成長導向團隊的執行需求</li></ul></article>
-            <article class="card service-card reveal"><span class="chip">成效分析顧問</span><h3>聚焦歸因、增量效果與預算配置的策略顧問服務。</h3><p class="muted">從歸因、增量效果、廣告投資報酬率與預算配置出發，建立更清楚也更可信的成效判讀。</p><ul class="service-list"><li>歸因與增量效果分析</li><li>廣告投資報酬率、用戶終身價值與預算配置檢視</li><li>可擴展的成長策略建議</li></ul></article>
+          <div class="service-overview-grid">
+            <article class="service-summary-card">
+              <span class="chip">廣告投放｜4 週</span>
+              <h3>讓投放穩定出量，預算使用更可控。</h3>
+              <dl class="summary-facts">
+                <div class="summary-fact"><dt>適合對象</dt><dd>需要穩定出量，但缺少投手與優化能力的品牌。</dd></div>
+                <div class="summary-fact"><dt>合作週期</dt><dd>以 4 週為一輪，每週追蹤成效並調整投放。</dd></div>
+                <div class="summary-fact"><dt>核心交付</dt><dd>投放啟動、測試設計、優化紀錄、月結報告。</dd></div>
+                <div class="summary-fact"><dt>費用方式</dt><dd>依月廣告預算級距計算；5 萬以下固定月費。</dd></div>
+              </dl>
+            </article>
+            <article class="service-summary-card">
+              <span class="chip">成效分析顧問｜8 週</span>
+              <h3>釐清成效來源，建立預算與成長決策依據。</h3>
+              <dl class="summary-facts">
+                <div class="summary-fact"><dt>適合對象</dt><dd>已有投放，但不確定成效來源、問題原因或預算分配方向的品牌。</dd></div>
+                <div class="summary-fact"><dt>合作週期</dt><dd>8 週顧問合作，每週檢視數據並調整策略。</dd></div>
+                <div class="summary-fact"><dt>核心交付</dt><dd>數據健檢、歸因判讀、預算配置建議與成長優先順序。</dd></div>
+                <div class="summary-fact"><dt>費用方式</dt><dd>填寫諮詢表單後，依需求提供顧問報價。</dd></div>
+              </dl>
+            </article>
+          </div>
+
+          <div class="full-plan-list">
+            <details class="full-plan">
+              <summary><span class="full-plan-summary"><strong>完整方案內容｜廣告投放</strong><span>4 週執行安排、交付項目與費率級距</span></span></summary>
+              <div class="full-plan-content service-card">
+                <div>
+                  <div class="service-cycle-head">
+                    <span class="service-block-title">4 週執行安排｜每週交付</span>
+                    <div class="service-toggle-actions" aria-label="4 週執行節奏控制">
+                      <button class="service-toggle-button" type="button" data-accordion-action="expand" onclick="toggleServiceAccordion(this, true)">全部展開</button>
+                      <button class="service-toggle-button" type="button" data-accordion-action="collapse" onclick="toggleServiceAccordion(this, false)">全部收合</button>
+                    </div>
+                  </div>
+                  <div class="service-cycle">
+                    <details class="week-card">
+                      <summary><h4>第 1 週｜帳戶校正與投放啟動</h4></summary>
+                      <div class="week-content"><ul><li>檢查帳戶結構、追蹤設定與基礎轉換訊號</li><li>對齊關鍵成效指標與首週觀察重點</li><li>完成必要設定後啟動廣告，開始累積第一波投放數據</li><li>同步盤點成本偏高、不出量或轉換不佳等問題</li></ul><p class="deliverable">交付：投放啟動確認、帳戶診斷與首週優化方向</p></div>
+                    </details>
+                    <details class="week-card">
+                      <summary><h4>第 2 週｜測試啟動</h4></summary>
+                      <div class="week-content"><ul><li>規劃素材與受眾組合測試</li><li>啟動測試並配置初步預算</li><li>觀察初期成效訊號與出量狀態</li></ul><p class="deliverable">交付：測試設計表與初步數據觀察</p></div>
+                    </details>
+                    <details class="week-card">
+                      <summary><h4>第 3 週｜優化與放大</h4></summary>
+                      <div class="week-content"><ul><li>保留表現較佳的組合，關閉低效組合</li><li>調整出價、預算與受眾設定</li><li>確認具放大潛力的素材與受眾訊號</li></ul><p class="deliverable">交付：優化紀錄與調整重點說明</p></div>
+                    </details>
+                    <details class="week-card">
+                      <summary><h4>第 4 週｜穩定與優化建議</h4></summary>
+                      <div class="week-content"><ul><li>整理表現穩定的高效組合與成效觀察</li><li>控制成本並維持有效量體</li><li>提出未來優化建議</li></ul><p class="deliverable">交付：月結報告</p></div>
+                    </details>
+                  </div>
+                </div>
+                <div class="service-bottom">
+                  <section class="service-block"><span class="service-block-title">你實際會得到</span><ul><li>每週會議追蹤</li><li>成效異常即時調整，不必等到固定報告才處理</li><li>素材與受眾測試建議</li><li>基本轉換路徑檢查，避免把網站或流程問題誤判為投放問題</li></ul></section>
+                  <section class="service-block"><span class="service-block-title">服務費率</span><p class="pricing-formula">服務費 = 月廣告預算 x 對應費率；5 萬以下採固定月費。</p><div class="pricing-table"><div class="pricing-row pricing-row--head"><span>月廣告預算</span><span>服務費計算</span></div><div class="pricing-row"><span>5 萬以下</span><strong>新台幣 10,000 元／月</strong></div><div class="pricing-row"><span>5 萬至 30 萬</span><strong>22%</strong></div><div class="pricing-row"><span>30 萬至 150 萬</span><strong>20%</strong></div><div class="pricing-row"><span>150 萬以上</span><strong>18%</strong></div></div><div class="pricing-threshold"><span>最低合作門檻</span><strong>新台幣 15,000 元起</strong></div></section>
+                </div>
+                <p class="service-note">服務目標：讓投放更穩定，讓預算使用更可控。</p>
+              </div>
+            </details>
+
+            <details class="full-plan">
+              <summary><span class="full-plan-summary"><strong>完整方案內容｜成效分析顧問</strong><span>8 週顧問合作、分析範圍與報價方式</span></span></summary>
+              <div class="full-plan-content service-card">
+                <div>
+                  <div class="service-cycle-head">
+                    <span class="service-block-title">顧問核心內容｜協助判斷與決策</span>
+                    <div class="service-toggle-actions" aria-label="顧問核心內容控制">
+                      <button class="service-toggle-button" type="button" data-accordion-action="expand" onclick="toggleServiceAccordion(this, true)">全部展開</button>
+                      <button class="service-toggle-button" type="button" data-accordion-action="collapse" onclick="toggleServiceAccordion(this, false)">全部收合</button>
+                    </div>
+                  </div>
+                  <div class="service-cycle">
+                    <details class="week-card"><summary><h4>1. 成效與數據健檢</h4></summary><div class="week-content"><ul><li>檢視現有廣告、網站與用戶行為數據</li><li>拆解流量、轉換與回購表現</li><li>找出錯誤假設與數據盲點</li></ul></div></details>
+                    <details class="week-card"><summary><h4>2. 成效來源與歸因分析</h4></summary><div class="week-content"><ul><li>拆解廣告轉換與自然轉換</li><li>判斷目前成效是否被高估</li><li>檢視現有歸因設定與數據解讀方式</li></ul></div></details>
+                    <details class="week-card"><summary><h4>3. 預算與投放策略優化</h4></summary><div class="week-content"><ul><li>分析各渠道與活動效率</li><li>找出低效支出與預算浪費</li><li>提出預算重新配置建議</li></ul></div></details>
+                    <details class="week-card"><summary><h4>4. 成長策略與優先順序</h4></summary><div class="week-content"><ul><li>明確定義目前最需要優先改善的環節</li><li>建立短期與中期的成長方向</li><li>避免同時投入太多低效優化</li></ul></div></details>
+                    <details class="week-card"><summary><h4>5. 測試設計與驗證方法</h4></summary><div class="week-content"><ul><li>設計可驗證的測試，例如對照組與受眾分群</li><li>建立成效判斷標準</li><li>確保優化決策有數據依據，而不是只憑感覺</li></ul></div></details>
+                    <details class="week-card"><summary><h4>6. 成長路徑與執行建議</h4></summary><div class="week-content"><ul><li>建立可落地執行的優化計畫</li><li>規劃未來 3 個月的投放與成長方向</li><li>協助內部團隊或代理商銜接後續執行</li></ul></div></details>
+                  </div>
+                </div>
+                <div class="service-bottom">
+                  <section class="service-block"><span class="service-block-title">8 週合作方式</span><ul><li>每週顧問會議，檢視數據並調整方向</li><li>持續分析與策略修正，不只是一次性報告</li><li>協助判斷關鍵決策：是否放大、是否停損、是否調整方向</li></ul></section>
+                  <section class="service-block"><span class="service-block-title">顧問服務費</span><div class="pricing-threshold"><span>索取報價</span><strong>提交後提供報價</strong><a class="button button-secondary" href="https://docs.google.com/forms/d/1P2xc1AzjeNA1UJE9m71t5a1RciQF1xJ7LQqhmJsjbtM/edit" target="_blank" rel="noreferrer">前往表單</a></div></section>
+                </div>
+                <div class="service-bottom service-bottom--single"><section class="service-block"><span class="service-block-title">你實際會得到</span><ul><li>一套判斷成效來源與品質的方法</li><li>明確的預算分配與停損依據</li><li>找出真正影響營收的關鍵問題</li><li>可直接執行的成長策略與優先順序</li></ul></section></div>
+                <p class="service-note">服務目標：讓優化決策更有依據，讓資源投入更聚焦。</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="service-process-panel" id="service-process">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">合作流程</span>
+                <h2>從初步諮詢到結案報告，每一步都有清楚節奏。</h2>
+              </div>
+              <p>先確認品牌需求與合作方案，再進入 4 週或 3 個月的合作週期，最後交付執行分析與結案報告。</p>
+            </div>
+            <div class="process-flow reveal">
+              <article class="process-step-card"><div class="card-topline"><span class="chip">40 分鐘諮詢</span><span class="card-index">01</span></div><div><h3>釐清需求與投放現況</h3><p class="muted">了解品牌現況、投放目標、預算規模與目前遇到的成效問題。</p></div></article>
+              <article class="process-step-card"><div class="card-topline"><span class="chip">確認合作方案</span><span class="card-index">02</span></div><div><h3>對齊範圍與執行節奏</h3><p class="muted">依照需求確認合作範圍、執行節奏、主要目標與溝通方式。</p></div></article>
+              <article class="process-step-card"><div class="card-topline"><span class="chip">案件進行</span><span class="card-index">03</span></div><div><h3>進入 4 週或 3 個月合作週期</h3><p class="muted">依合作方案進行投放、測試、優化、會議追蹤與階段性調整。</p></div></article>
+              <article class="process-step-card"><div class="card-topline"><span class="chip">執行分析與結案報告</span><span class="card-index">04</span></div><div><h3>整理成果與後續建議</h3><p class="muted">整理執行結果、成效觀察、優化重點與後續可延伸的建議。</p></div></article>
+            </div>
           </div>
         </div>
       </div>
@@ -735,7 +1253,7 @@
       <div class="container">
         <article class="career-arc">
           <div class="career-head reveal">
-            <span class="eyebrow">職涯經歷</span>
+            <span class="eyebrow">專業經歷</span>
             <div class="career-hero">
               <strong>聚焦於成效判讀、歸因與成長策略。</strong>
               <p class="muted">橫跨亞太、美國與歐洲的投放經驗，圍繞成效優化、數據判讀與可擴展的成長決策。</p>
@@ -947,6 +1465,21 @@
       observer.observe(element);
     });
 
+    window.toggleServiceAccordion = function (button, shouldOpen) {
+      const section = button.closest('.service-card');
+      if (!section) return;
+      section.querySelectorAll('details.week-card').forEach(function (item) {
+        item.open = shouldOpen;
+      });
+    };
+
+    document.addEventListener('click', function (event) {
+      const button = event.target.closest('[data-accordion-action]');
+      if (!button) return;
+      const shouldOpen = button.dataset.accordionAction === 'expand';
+      toggleServiceAccordion(button, shouldOpen);
+    });
+
     const items = document.querySelectorAll('.timeline-item');
     const timelineObserver = new IntersectionObserver(
       function (entries) {
@@ -972,6 +1505,18 @@
       card.addEventListener('focus', function () {
         timelineCards.forEach(function (item) { item.classList.remove('is-active'); });
         card.classList.add('is-active');
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      const target = event.target.closest('a, button');
+      if (!target || typeof gtag !== 'function') return;
+      const label = (target.getAttribute('aria-label') || target.textContent || '').trim().replace(/\s+/g, ' ');
+      gtag('event', 'site_click', {
+        click_text: label.slice(0, 120),
+        click_url: target.href || '',
+        click_type: target.tagName.toLowerCase(),
+        page_location: window.location.href
       });
     });
   </script>
